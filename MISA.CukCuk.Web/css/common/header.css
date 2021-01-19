@@ -1,0 +1,49 @@
+﻿.header {
+    float: left;
+    width: calc(100% - 221px);
+    height: 60px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+    .header .header-box {
+        display: flex;
+        align-items: center;
+        height: inherit;
+    }
+
+        .header .header-box .list-restaurant {
+            margin-left: 16px;
+        }
+
+            .header .header-box .list-restaurant select {
+                border: none;
+                font-family: GoogleSans-Bold;
+            }
+
+        .header .header-box .user-infor {
+            position: absolute;
+            right: 0;
+            display: flex;
+            align-items: center;
+        }
+
+.user-infor .user-avatar {
+    background-image: url('/content/icon/avatar-default.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    margin-right: 16px;
+}
+.user-infor .user-name{
+    margin-right: 16px;
+}
+.user-infor .user-option {
+    background-image: url('/content/icon/option.png');
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+    margin-right: 16px;
+}

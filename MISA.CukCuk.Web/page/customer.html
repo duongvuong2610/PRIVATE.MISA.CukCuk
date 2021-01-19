@@ -1,0 +1,264 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <link href="/css/common/main.css" rel="stylesheet" />
+    <link href="/css/common/icon.css" rel="stylesheet" />
+    <link href="/css/common/button.css" rel="stylesheet" />
+    <link href="/css/common/input.css" rel="stylesheet" />
+    <link href="/css/common/toolbar.css" rel="stylesheet" />
+    <link href="/css/common/grid.css" rel="stylesheet" />
+    <link href="/css/common/pagingbar.css" rel="stylesheet" />
+    <link href="/css/common/common.css" rel="stylesheet" />
+    <link href="/css/common/dialog.css" rel="stylesheet" />
+    <link href="/css/common/header.css" rel="stylesheet" />
+    <link href="/css/common/navbar.css" rel="stylesheet" />
+    <link href="/css/common/content.css" rel="stylesheet" />
+    <link href="/css/page/employee.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo-site">
+            <div class="logo-box">
+                <div class="toggle-icon"></div>
+                <div class="cukcuk-logo"></div>
+            </div>
+        </div>
+        <div class="navbar-content">
+            <a class="nav-item">
+                <div class="nav-item-icon nav-item-dashboard"></div>
+                <div class="nav-item-text">Tổng quan</div>
+            </a>
+            <a class="nav-item">
+                <div class="nav-item-icon nav-item-report"></div>
+                <div class="nav-item-text">Báo cáo</div>
+            </a>
+            <a class="nav-item">
+                <div class="nav-item-icon nav-item-dashboard"></div>
+                <div class="nav-item-text">Mua hàng</div>
+            </a>
+            <a class="nav-item" href="employee.html">
+                <div class="nav-item-icon nav-item-document-online"></div>
+                <div class="nav-item-text">Danh mục nhân viên</div>
+            </a>
+            <a class="nav-item" href="customer.html">
+                <div class="nav-item-icon nav-item-dic-employee"></div>
+                <div class="nav-item-text">Danh mục khách hàng</div>
+            </a>
+            <a class="nav-item">
+                <div class="nav-item-icon nav-item-setting"></div>
+                <div class="nav-item-text">Thiết lập hệ thống</div>
+            </a>
+        </div>
+    </div>
+
+
+    <div class="header">
+        <div class="header-box">
+            <div class="list-restaurant">
+                <select>
+                    <option>Nhà hàng Biển Đông</option>
+                    <option>Nhà hàng Hải Dương</option>
+                    <option>Nhà hàng Đội Cấn</option>
+                    <option>Nhà hàng Cầu Giấy</option>
+                </select>
+            </div>
+            <div class="user-infor">
+                <div class="user-avatar"></div>
+                <div class="user-name">Nguyễn Văn Mạnh</div>
+                <div class="user-option"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="header-content">
+            <div class="title">Danh sách Khách hàng</div>
+            <div class="content-feature">
+                <button id="btnAdd" class="m-btn m-btn-default">
+                    <div class="m-btn-icon icon-add"></div>
+                    <div class="btn-text">Thêm Khách hàng</div>
+                </button>
+            </div>
+        </div>
+        <div class="filter-bar">
+            <div class="filter-left">
+                <input class="icon-search input-search" style="width: 200px;" type="text" placeholder="Tìm kiếm theo Mã, Tên Khách hàng" />
+                <!--<select>
+                    <option>Phòng đào tạo</option>
+                    <option>Phòng kinh doanh</option>
+                    <option>Phòng kế toán</option>
+                </select>-->
+            </div>
+            <div class="filter-right">
+                <button id="btnRefresh" class="m-btn-refresh m-secound-button">
+                </button>
+            </div>
+        </div>
+        <div class="grid grid-employee">
+            <table border="0" cellspacing="0" width="100%">
+                <colgroup>
+                    <col style="width: 150px" />
+                    <col style="width: 200px" />
+                    <col style="width: 100px" />
+                    <col style="width: 100px" />
+                    <col style="width: 150px" />
+                    <col style="width: 150px" />
+                    <col style="width: 150px" />
+                    <col style="width: 300px" />
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th fieldName="CustomerCode">Mã nhân viên</th>
+                        <th fieldName="FullName">Họ và tên</th>
+                        <th fieldName="GenderName" class="text-align-center">Giới tính</th>
+                        <th fieldName="DateOfBirth" formatType="ddmmyyyy">Ngày sinh</th>
+                        <th fieldName="PhoneNumber">Số điện thoại</th>
+                        <th fieldName="Email">Email</th>
+                        <th fieldName="MemberCardCode" class="">Số thẻ</th>
+                        <th fieldName="CustomerGroupId" class="">Mã nhóm khách hàng</th>
+                        <th fieldName="CustomerGroupName" style="max-width: 180px;">Nhóm khách hàng</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!--<tr>
+            <td><div><span>NV0001</span></div></td>
+            <td><div><span>Dương Văn Vương</span></div></td>
+            <td><div><span>Nam</span></div></td>
+            <td><div><span>26/10/1999</span></div></td>
+            <td><div><span>0359682155</span></div></td>
+            <td class="cell-overflow"><div style="max-width: 250px" title="`++`"><span>Yên Mô, Ninh Bình</span></div></td>
+        </tr>-->
+
+                </tbody>
+            </table>
+        </div>
+        <div class="paging-bar">
+            <div class="paging-sum">Hiển thị <b>1-10/1000</b> khách hàng</div>
+            <div class="paging-transfer">
+                <button class="btn-page btn-firstpage"></button>
+                <button class="btn-page btn-prev-page"></button>
+                <button class="btn-page-number m-btn-active">1</button>
+                <button class="btn-page-number">2</button>
+                <button class="btn-page-number">3</button>
+                <button class="btn-page-number">4</button>
+                <button class="btn-page btn-next-page"></button>
+                <button class="btn-page btn-lastpage"></button>
+            </div>
+            <div class="paging-count"><b>10</b> Khách hàng/trang</div>
+        </div>
+    </div>
+    <div class="m-dialog dialog-detail">
+        <div class="dialog-modal"></div>
+        <div class="dialog-content">
+            <div class="dialog-header">
+                <div class="dialog-header-title">Thông tin nhân viên</div>
+                <div class="dialog-header-close">
+                    <button id="btnClose"></button>
+                </div>
+            </div>
+            <div class="dialog-body">
+                <div class="dialog-body-top m-display-flex">
+                    <div class="dialog-avatar">
+                        <button class="m-avatar"></button>
+                        <div>Vui lòng chọn ảnh có định dạng</div>
+                        <div><b>.jpg, .jpeg, .png, .gif.</b></div>
+                    </div>
+                    <div class="customer-infor">
+                        <div class="m-display-flex">
+                            <div class="m-row m-row-margin">
+                                <div class="m-label">Mã khách hàng (<span class="field-important">*</span>)</div>
+                                <div class="m-control"><input id="txtCustomerCode" type="text" fieldName="CustomerCode" class="input-dialog-focus" required/></div>
+                            </div>
+                            <div class="m-row">
+                                <div class="m-label">Họ và tên (<span class="field-important">*</span>)</div>
+                                <div class="m-control"><input id="txtFullName" type="text" fieldName="FullName" class="input-dialog-focus" required/></div>
+                            </div>
+                        </div>
+                        <div class="m-display-flex">
+                            <div class="m-row m-row-margin">
+                                <div class="m-label">Mã thẻ thành viên</div>
+                                <div class="m-control"><input id="txtMemberCardCode" fieldName="MemberCardCode" type="text" class="input-dialog-focus" required/></div>
+                            </div>
+                            <div class="m-row">
+                                <div class="m-label">Nhóm khách hàng</div>
+                                <select id="cbxCustomerGroup" fieldName="CustomerGroupName" fieldValue="CustomerGroupId" api="/api/customergroups" class="m-control m-select input-dialog-focus">
+                                 
+                                </select>
+                            </div>
+                        </div>
+                        <div class="m-display-flex">
+                            <div class="m-row m-row-margin">
+                                <div class="m-label">Ngày sinh</div>
+                                <div class="m-control m-user-date"><input id="dtDateOfBirth" fieldName="DateOfBirth" type="date" class="input-dialog-focus"/></div>
+                            </div>
+                            <div class="m-row">
+                                <div class="m-label">Giới tính</div>
+                                <div class="m-radio-group">
+                                    <div class="m-radio-item">
+                                        <input type="radio" id="tdMale" value="1" fieldName="Gender" name="gender"/>
+                                        <label for="rdMale">Nam</label>
+                                    </div>
+                                    <div class="m-radio-item">
+                                        <input type="radio" id="rdFemale" value="0" fieldName="Gender" name="gender"/>
+                                        <label for="rdFemale">Nữ</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="dialog-body-bottom">
+                    <div class="m-display-flex">
+                        <div class="m-row m-row-margin m-grow">
+                            <div class="m-label">Email</div>
+                            <div class="m-control"><input id="txtEmail" type="email" fieldName="Email" class="input-dialog-focus" style="flex-grow: 1;" placeholder="example@domain.com"/></div>
+                        </div>
+                        <div class="m-row">
+                            <div class="m-label">Số điện thoại (<span class="field-important">*</span>)</div>
+                            <div class="m-control"><input id="txtPhoneNumber" fieldName="PhoneNumber"  type="text" class="input-dialog-focus" required/></div>
+                        </div>
+                    </div>
+                    <div class="m-display-flex">
+                        <div class="m-row m-row-margin m-grow">
+                            <div class="m-label">Tên công ty</div>
+                            <div class="m-control"><input id="txtCompanyName" type="text" fieldName="CompanyName" class="input-dialog-focus" style="flex-grow: 1;" required/></div>
+                        </div>
+                        <div class="m-row">
+                            <div class="m-label">Mã số thuế</div>
+                            <div class="m-control"><input id="txtCompanyTaxCode" type="text" fieldName="CompanyTaxCode"  class="input-dialog-focus" placeholder="Mã số thuế của công ty" required/></div>
+                        </div>
+                    </div>
+                    <div class="m-display-flex">
+                        <div class="m-row" style="flex-grow: 1;">
+                            <div class="m-label">Địa chỉ</div>
+                            <div class="m-control"><input id="txtAddress" type="text" fieldName="Address" class="input-dialog-focus" style="flex-grow: 1;" required/></div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="dialog-footer">
+                <button id="btnCancel" class="m-btn-cancel">Hủy</button>
+               
+                <button id="btnSave" class="m-btn m-btn-save">
+                    <div class="m-btn-icon icon-save"></div>
+                    <div class="btn-text">Lưu</div>
+                </button>
+               
+            </div>
+        </div>
+    </div>
+    <div class="loading">
+        <div class="loading-modal"></div>
+        <div class="loading-icon"></div>
+    </div>
+
+    <script src="/lib/jquery-3.5.1.min.js"></script>
+    <script src="/js/common/common.js"></script>
+    <script src="/js/common/base.js"></script>
+    <script src="/js/page/customer.js"></script>
+</body>
+</html>

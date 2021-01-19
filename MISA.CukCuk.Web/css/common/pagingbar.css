@@ -1,0 +1,16 @@
+﻿.paging-bar {
+    height: 56px;
+    display: flex;
+    align-items: center;
+    border-top: 1px solid #bbbbbb;
+}
+    .paging-bar .paging-count {
+        position: absolute;
+        right: 16px;
+    }
+
+    .paging-bar .paging-transfer{
+        margin: auto;
+        display: flex;
+
+    }
