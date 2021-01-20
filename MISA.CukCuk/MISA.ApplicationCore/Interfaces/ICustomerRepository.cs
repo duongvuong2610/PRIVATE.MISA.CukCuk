@@ -9,47 +9,9 @@ namespace MISA.ApplicationCore.Interfaces
     /// Interface danh mục khách hàng
     /// </summary>
     /// CreatedBy: DVVUONG (18/01/2021)
-    public interface ICustomerRepository
+    public interface ICustomerRepository : IBaseRepository<Customer>
     {
         #region Method
-        /// <summary>
-        /// Lấy danh sách khách hàng
-        /// </summary>
-        /// <returns>Danh sách khách hàng</returns>
-        /// CreatedBy: DVVUONG (18/01/2021)
-        IEnumerable<Customer> GetCustomers();
-
-        /// <summary>
-        /// Lấy khách hàng theo id
-        /// </summary>
-        /// <param name="customerId">id khách hàng</param>
-        /// <returns>object khách hàng</returns>
-        /// CreatedBy: DVVUONG (18/01/2021)
-        Customer GetCustomerById(Guid customerId);
-
-        /// <summary>
-        /// Thêm mới khách hàng
-        /// </summary>
-        /// <param name="customer">object khách hàng</param>
-        /// <returns>số bản ghi thêm mới được</returns>
-        /// CreatedBy: DVVUONG (18/01/2021)
-        int AddCustomer(Customer customer);
-
-        /// <summary>
-        /// Chỉnh sửa thông tin khách hàng
-        /// </summary>
-        /// <param name="customer">object khách hàng</param>
-        /// <returns>số bản ghi bị ảnh hưởng(chỉnh sửa được)</returns>
-        /// CreatedBy: DVVUONG (18/01/2021)
-        int UpdateCustomer(Customer customer);
-
-        /// <summary>
-        /// Xóa khách hàng theo id
-        /// </summary>
-        /// <param name="customerId">id khách hàng</param>
-        /// <returns>số bản ghi bị ảnh hưởng(bị xóa)</returns>
-        /// CreatedBy: DVVUONG (18/01/2021)
-        int DeleteCustomer(Guid customerId);
 
         /// <summary>
         /// Lấy khách hàng theo mã khách hàng

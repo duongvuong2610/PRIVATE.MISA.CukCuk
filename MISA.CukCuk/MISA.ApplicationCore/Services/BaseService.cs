@@ -1,4 +1,5 @@
-﻿using MISA.ApplicationCore.Interfaces;
+﻿using MISA.ApplicationCore.Entities;
+using MISA.ApplicationCore.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -17,9 +18,17 @@ namespace MISA.ApplicationCore.Services
         #endregion
 
         #region Method
-        public int Add(TEntity entity)
+        public virtual int Add(TEntity entity)
         {
-            return _baseRepository.Add(entity);
+            var isValid = Validate(entity);
+            if(isValid == true)
+            {
+                return _baseRepository.Add(entity);
+            }
+            else
+            {
+                return 0;
+            }
         }
 
         public int Delete(Guid entityId)
@@ -27,7 +36,7 @@ namespace MISA.ApplicationCore.Services
             return _baseRepository.Delete(entityId);
         }
 
-        public IEnumerable<TEntity> GetEntities()
+        public virtual IEnumerable<TEntity> GetEntities()
         {
             return _baseRepository.GetEntities();
         }
@@ -41,6 +50,40 @@ namespace MISA.ApplicationCore.Services
         {
             return _baseRepository.Update(entity);
         }
+
+        private bool Validate(TEntity entity)
+        {
+            var isValidate = true;
+            // Đọc các property
+            var properties = entity.GetType().GetProperties();
+            foreach (var property in properties)
+            {
+                // kiểm tra xem có attribute cần phải validate không
+                if (property.IsDefined(typeof(Required), false))
+                {
+                    // check bat buoc nhap
+                    var propertyValue = property.GetValue(entity);
+                    if (propertyValue == null)
+                    {
+                        isValidate = false;
+                    }
+                }
+                if (property.IsDefined(typeof(CheckDuplicate), false))
+                {
+                    // check trùng dữ liệu
+                    var propertyName = property.Name;
+                    var entityDuplicate = _baseRepository.GetEntityByProperty(property.Name, property.GetValue(entity));
+                    if (entityDuplicate != null)
+                    {
+                        isValidate = false;
+                    }
+                }
+
+
+            }
+            return isValidate;
+        }
+
         #endregion
     }
 }

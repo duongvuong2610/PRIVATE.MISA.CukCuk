@@ -15,11 +15,14 @@ namespace MISA.ApplicationCore.Entities
         /// <summary>
         /// Id khách hàng
         /// </summary>
+        [PrimaryKey]
         public Guid CustomerId { get; set; }
 
         /// <summary>
         /// Mã khách hàng
         /// </summary>
+       
+        [Required]
         public string CustomerCode { get; set; }
 
         /// <summary>
@@ -40,6 +43,8 @@ namespace MISA.ApplicationCore.Entities
         /// <summary>
         /// Số điện thoại khách hàng
         /// </summary>
+        /// 
+        [CheckDuplicate]
         public string PhoneNumber { get; set; }
 
         /// <summary>

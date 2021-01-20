@@ -22,11 +22,11 @@ namespace MISA.CukCuk.Api
     [Route("api/v1/[controller]")]
     public class CustomersController : BaseEntityController<Customer>
     {
-        IBaseService<Customer> _baseService;
+        ICustomerService _customerService;
 
-        public CustomersController(IBaseService<Customer> baseService):base(baseService)
+        public CustomersController(ICustomerService customerService) :base(customerService)
         {
-            _baseService = baseService;
+            _customerService = customerService;
         }
     }
 }

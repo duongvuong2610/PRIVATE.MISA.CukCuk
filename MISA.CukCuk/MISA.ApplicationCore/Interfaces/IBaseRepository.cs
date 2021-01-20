@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
 
 namespace MISA.ApplicationCore.Interfaces
@@ -16,6 +17,8 @@ namespace MISA.ApplicationCore.Interfaces
         int Update(TEntity entity);
 
         int Delete(Guid entityId);
+
+        TEntity GetEntityByProperty(string propertyName, object propertyValue);
         #endregion
     }
 }
