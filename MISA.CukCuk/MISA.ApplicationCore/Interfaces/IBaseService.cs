@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MISA.ApplicationCore.Entities;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -11,11 +12,11 @@ namespace MISA.ApplicationCore.Interfaces
 
         TEntity GetEntityById(Guid entityId);
 
-        int Add(TEntity entity);
+        ServiceResult Add(TEntity entity);
 
-        int Update(TEntity entity);
+        ServiceResult Update(TEntity entity);
 
-        int Delete(Guid entityId);
+        ServiceResult Delete(Guid entityId);
         #endregion
     }
 }
