@@ -11,6 +11,7 @@ namespace MISA.ApplicationCore.Services
     {
         IBaseRepository<TEntity> _baseRepository;
         ServiceResult _serviceResult;
+
         #region Constructor
         public BaseService(IBaseRepository<TEntity> baseRepository)
         {
@@ -23,6 +24,7 @@ namespace MISA.ApplicationCore.Services
         #region Method
         public virtual ServiceResult Add(TEntity entity)
         {
+            entity.EntityState = Enums.EntityState.AddNew;
             var isValid = Validate(entity);
             if(isValid == true)
             {
@@ -54,6 +56,7 @@ namespace MISA.ApplicationCore.Services
 
         public ServiceResult Update(TEntity entity)
         {
+            entity.EntityState = Enums.EntityState.Update;
             var isValid = Validate(entity);
             if (isValid == true)
             {
@@ -94,7 +97,7 @@ namespace MISA.ApplicationCore.Services
                 {
                     // check trùng dữ liệu
                     var propertyName = property.Name;
-                    var entityDuplicate = _baseRepository.GetEntityByProperty(property.Name, property.GetValue(entity));
+                    var entityDuplicate = _baseRepository.GetEntityByProperty(entity, property);
                     if (entityDuplicate != null)
                     {
                         isValidate = false;

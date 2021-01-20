@@ -1,16 +1,19 @@
 ﻿using Dapper;
 using Microsoft.Extensions.Configuration;
+using MISA.ApplicationCore.Entities;
+using MISA.ApplicationCore.Enums;
 using MISA.ApplicationCore.Interfaces;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 
 namespace MISA.Infrastructure
 {
-    public class BaseRepository<TEntity> : IBaseRepository<TEntity>
+    public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity: BaseEntity
     {
         #region Declare
         IConfiguration _configuration;
@@ -92,11 +95,27 @@ namespace MISA.Infrastructure
             return parameters;
         }
 
-        public TEntity GetEntityByProperty(string propertyName, object propertyValue)
+        public TEntity GetEntityByProperty(TEntity entity, PropertyInfo property)
         {
-            var query = $"SELECT * FROM {_tableName} WHERE {propertyName} = '{propertyValue}'";
-            var entity = _dbConnection.Query<TEntity>(query, commandType: CommandType.Text).FirstOrDefault();
-            return entity;
+            var propertyName = property.Name;
+            var propertyValue = property.GetValue(entity);
+            var keyValue = entity.GetType().GetProperty($"{_tableName}Id").GetValue(entity);
+            var query = string.Empty;
+            if(entity.EntityState == EntityState.AddNew)
+            {
+                query = $"SELECT * FROM {_tableName} WHERE {propertyName} = '{propertyValue}'";
+
+            }
+            else if(entity.EntityState == EntityState.Update)
+            {
+                query = $"SELECT * FROM {_tableName} WHERE {propertyName} = '{propertyValue}' AND {_tableName}Id <> '{keyValue}'";
+            }
+            else
+            {
+                return null;
+            }
+            var entityReturn = _dbConnection.Query<TEntity>(query, commandType: CommandType.Text).FirstOrDefault();
+            return entityReturn;
         }
     }
 }

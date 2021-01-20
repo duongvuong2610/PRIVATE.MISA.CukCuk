@@ -49,6 +49,7 @@ namespace MISA.ApplicationCore.Entities
         /// </summary>
         /// 
         [CheckDuplicate]
+        [DisplayName("Số điện thoại")]
         public string PhoneNumber { get; set; }
 
         /// <summary>
