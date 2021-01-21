@@ -152,6 +152,14 @@ class BaseJS {
                                 td.addClass("text-align-right");
                                 value = formatMoney(value);
                                 break;
+                            case "Gender":
+                                td.addClass("text-align-right");
+                                value = formatGender(value);
+                                break;
+                            case "WorkStatus":
+                                td.addClass("text-align-right");
+                                value = formatWorkStatus(value);
+                                break;
                             default:
                                 break;
                         }

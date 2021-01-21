@@ -30,3 +30,33 @@ function formatMoney(money) {
     }
     return "";
 }
+
+/**------------------------------------
+ * Hàm định dạng hiển thị giới tính
+ * @param {Number} gender giới tính
+ * CreatedBy: DVVUONG (21/01/2021)
+ */
+function formatGender(gender) {
+    if (gender == 0)
+        return "Nam";
+    else if (gender == 1)
+        return "Nữ";
+    else if (gender == 2)
+        return "Khác";
+    else
+        return "";
+}
+
+/**-------------------------------------------
+ * Hàm định dạng hiển thị trạng thái công việc
+ * @param {number} status trạng thái
+ * CreatedBy: DVVUONG (21/01/2021)
+ */
+function formatWorkStatus(status) {
+    if (status == 0)
+        return "Nghỉ việc";
+    else if (status == 1)
+        return "Đang làm việc";
+    else
+        return "";
+}
