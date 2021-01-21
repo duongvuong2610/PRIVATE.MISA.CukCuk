@@ -1,7 +1,6 @@
 ﻿
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -24,7 +23,9 @@ namespace MISA.ApplicationCore.Entities
         /// </summary>
        
         [Required]
+        [CheckDuplicate]
         [DisplayName("Mã khách hàng")]
+        [MaxLength(20, "Ma khach hang khong vuot qua 20 ky tu")]
         public string CustomerCode { get; set; }
 
         /// <summary>

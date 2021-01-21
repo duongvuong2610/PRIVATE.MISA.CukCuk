@@ -10,6 +10,8 @@ namespace MISA.ApplicationCore.Interfaces
         #region Method
         IEnumerable<TEntity> GetEntities();
 
+        IEnumerable<TEntity> GetEntities(string storeName);
+
         TEntity GetEntityById(Guid entityId);
 
         int Add(TEntity entity);

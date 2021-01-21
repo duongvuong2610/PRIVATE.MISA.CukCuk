@@ -1,0 +1,107 @@
+﻿.m-dialog {
+   display: none;
+}
+
+    .m-dialog .dialog-modal {
+        position: fixed;
+        z-index: 999;
+        width: 100%;
+        height: 100vh;
+        background-color: black;
+        opacity: 0.5;
+    }
+
+    .m-dialog .dialog-content {
+        position: absolute;
+        /*width: 750px;*/
+        /*height: 580px;*/
+        z-index: 1000;
+        top: calc(50% - 290px);
+        left: calc(50% - 375px);
+        background-color: #ffffff;
+        border-radius: 5px;
+    }
+    .m-dialog .dialog-header{
+        display: flex;
+        padding: 24px 24px 0 24px;
+    }
+        .m-dialog .dialog-header .dialog-header-close{
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+        .m-dialog .dialog-header .dialog-header-close:hover{
+            border-radius: 5px;
+            
+        }
+            .m-dialog .dialog-header .dialog-header-close button {
+                background-image: url('/content/icon/x.svg');
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: 20px;
+                opacity: 0.7;
+                border-radius: 0 5px 0 0;
+                background-color: #ffffff;
+                width: 40px;
+                height: 40px;
+                border: none;
+                outline: none;
+                cursor: pointer;
+            }
+            .m-dialog .dialog-header .dialog-header-close button:hover{
+                background-color: #cccccc;
+            }
+        /*Tiêu đề của dialog*/
+        .m-dialog .dialog-header .dialog-header-title{
+            font-size: 20px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .m-dialog .dialog-body{
+            padding: 0 24px 24px 24px;
+        }
+
+        .m-dialog .dialog-footer {
+            height: 60px;
+            background-color: #bbb;
+            border-radius: 0 0 5px 5px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            
+        }
+
+            .m-dialog .dialog-footer .m-btn-cancel {
+                border: none;
+                outline: none;
+                background: none;
+                cursor:pointer;
+                margin-right: 16px;
+            }
+
+            .m-dialog .dialog-body .dialog-avatar {
+                width: 203px;
+                display: flex;
+                flex-direction: column;
+                /*justify-content: center;*/
+                align-items: center;
+                margin-top: 16px;
+                padding: 0 10px;
+            }
+
+    .m-dialog .dialog-body .m-avatar {
+        background-image: url('/content/icon/default-avatar.jpg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 170px;
+        height: 170px;
+        border: 1px solid #cccccc;
+        border-radius: 170px;
+        outline: none;
+        cursor: pointer;
+    }
+.input-dialog-focus:focus {
+    border: 1px solid #01b075;
+}

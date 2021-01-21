@@ -22,26 +22,10 @@ namespace MISA.ApplicationCore
 
         #region Method
 
-        //public override int Add(Customer entity)
-        //{
-        //    // validate thông tin 
-        //    var isValid = true;
-        //    // 1. check trung ma khach hang
-        //    var customerDuplicate = _customerRepository.GetCustomerByCode(entity.CustomerCode);
-        //    if(customerDuplicate != null)
-        //    {
-        //        isValid = false;
-        //    }
-        //    // logic validate
-        //    if (isValid == true)
-        //    {
-        //        return base.Add(entity);
-        //    }
-        //    else
-        //    {
-        //        return 0;
-        //    }
-        //}
+        public override ServiceResult Add(Customer entity)
+        {
+            return base.Add(entity);
+        }
 
         public IEnumerable<Customer> GetCustomerPaging(int limit, int offset)
         {

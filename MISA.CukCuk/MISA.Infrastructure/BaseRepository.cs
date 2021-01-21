@@ -13,7 +13,7 @@ using System.Text;
 
 namespace MISA.Infrastructure
 {
-    public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity: BaseEntity
+    public class BaseRepository<TEntity> : IBaseRepository<TEntity>, IDisposable where TEntity: BaseEntity
     {
         #region Declare
         IConfiguration _configuration;
@@ -34,17 +34,44 @@ namespace MISA.Infrastructure
 
         public int Add(TEntity entity)
         {
-            // Xử lý các kiểu dữ liệu (mapping dateType)
-            var parameters = MappingDbType(entity);
-            // thực thi commandText
-            var recordAffects = _dbConnection.Execute($"Proc_Insert{_tableName}", param: parameters, commandType: CommandType.StoredProcedure);
-            // trả về kết quả (số bản ghi thêm mới được)
+            var recordAffects = 0;
+            _dbConnection.Open();
+            using (var transaction = _dbConnection.BeginTransaction())
+            {
+                try
+                {
+                    // Xử lý các kiểu dữ liệu (mapping dateType)
+                    var parameters = MappingDbType(entity);
+                    // thực thi commandText
+                    recordAffects = _dbConnection.Execute($"Proc_Insert{_tableName}", param: parameters, commandType: CommandType.StoredProcedure);
+                    transaction.Commit();
+                    // trả về kết quả (số bản ghi thêm mới được)
+                    return recordAffects;
+                }
+                catch (Exception)
+                {
+                    transaction.Rollback();
+                }
+            }
             return recordAffects;
+               
         }
 
         public int Delete(Guid entityId)
         {
-            throw new NotImplementedException();
+            var dictionary = new Dictionary<string, object>
+            {
+                { $"{_tableName}Id", entityId.ToString() }
+            };
+            DynamicParameters parameter = new DynamicParameters(dictionary);
+            var res = 0;
+            _dbConnection.Open();
+            using(var transaction = _dbConnection.BeginTransaction())
+            {
+                res = _dbConnection.Execute($"Proc_Delele{_tableName}", param: parameter, commandType: CommandType.StoredProcedure);
+                transaction.Commit();
+            }
+            return res;
         }
 
         public IEnumerable<TEntity> GetEntities()
@@ -55,9 +82,25 @@ namespace MISA.Infrastructure
             return entities;
         }
 
+        public IEnumerable<TEntity> GetEntities(string storeName)
+        {
+            // tạo commandText
+            var entities = _dbConnection.Query<TEntity>($"storeName", commandType: CommandType.Text);
+            // trả về dữ liệu 
+            return entities;
+        }
+
         public TEntity GetEntityById(Guid entityId)
         {
-            throw new NotImplementedException();
+            var dictionary = new Dictionary<string, object>
+            {
+                { $"{_tableName}Id", entityId.ToString() }
+            };
+            DynamicParameters parameter = new DynamicParameters(dictionary);
+            // tạo commandText
+            var entity = _dbConnection.Query<TEntity>($"Proc_Get{_tableName}ById", param: parameter, commandType: CommandType.StoredProcedure).FirstOrDefault();
+            // trả về dữ liệu 
+            return entity;
         }
 
         public int Update(TEntity entity)
@@ -65,7 +108,7 @@ namespace MISA.Infrastructure
             // Xử lý các kiểu dữ liệu (mapping dateType)
             var parameters = MappingDbType(entity);
             // thực thi commandText
-            var recordAffects = _dbConnection.Execute($"Proc_UpdateCustomer", param: parameters, commandType: CommandType.StoredProcedure);
+            var recordAffects = _dbConnection.Execute($"Proc_Update{_tableName}", param: parameters, commandType: CommandType.StoredProcedure);
             // trả về kết quả (số bản ghi thêm mới được)
             return recordAffects;
         }
@@ -116,6 +159,12 @@ namespace MISA.Infrastructure
             }
             var entityReturn = _dbConnection.Query<TEntity>(query, commandType: CommandType.Text).FirstOrDefault();
             return entityReturn;
+        }
+
+        public void Dispose()
+        {
+            if (_dbConnection.State == ConnectionState.Open)
+                _dbConnection.Close();
         }
     }
 }

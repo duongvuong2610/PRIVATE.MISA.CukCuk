@@ -1,7 +1,7 @@
 ﻿
 class BaseJS {
     constructor() {
-        this.host = "http://localhost:50060";
+        this.host = "";
         this.apiRouter = null;
         this.setApiRouter();
         this.initEvents();
