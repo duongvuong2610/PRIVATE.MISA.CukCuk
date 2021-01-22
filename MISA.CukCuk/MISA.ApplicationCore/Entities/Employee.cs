@@ -14,17 +14,26 @@ namespace MISA.ApplicationCore.Entities
         /// <summary>
         /// Khóa chính
         /// </summary>
+        /// 
+        [PrimaryKey]
         public Guid EmployeeId { get; set; }
 
         /// <summary>
         /// Mã nhân viên
         /// </summary>
+        /// 
+        [Required]
+        [CheckDuplicate]
+        [DisplayName("Mã nhân viên")]
+        [MaxLength(20, "Mã nhân viên không vượt quá 20 ký tự")]
         public string EmployeeCode { get; set; }
 
 
         /// <summary>
         /// Họ và tên nhân viên
         /// </summary>
+        /// 
+        [Required]
         public string FullName { get; set; }
 
         /// <summary>
@@ -55,11 +64,17 @@ namespace MISA.ApplicationCore.Entities
         /// <summary>
         /// Email nhân viên
         /// </summary>
+        /// 
+        [Required]
+        [CheckDuplicate]
         public string Email { get; set; }
 
         /// <summary>
         /// Số điện thoại nhân viên
         /// </summary>
+        /// 
+        [Required]
+        [CheckDuplicate]
         public string PhoneNumber { get; set; }
 
         /// <summary>
@@ -91,6 +106,17 @@ namespace MISA.ApplicationCore.Entities
         /// Trạng thái công việc (0-nghỉ việc, 1-đang làm việc)
         /// </summary>
         public int? WorkStatus { get; set; }
+
+        /// <summary>
+        /// Tên vị trí công việc
+        /// </summary>
+        public string PositionName { get; set; }
+
+        /// <summary>
+        /// Tên phòng ban làm việc
+        /// </summary>
+        public string DepartmentName { get; set; }
+
         #endregion
     }
 }

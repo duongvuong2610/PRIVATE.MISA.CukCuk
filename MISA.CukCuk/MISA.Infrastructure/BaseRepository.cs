@@ -133,6 +133,7 @@ namespace MISA.Infrastructure
                 {
                     propertyValue = property.GetValue(entity).ToString();
                 }
+                
                 parameters.Add($"@{propertyName}", propertyValue);
             }
             return parameters;

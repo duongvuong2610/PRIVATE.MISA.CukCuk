@@ -19,7 +19,6 @@ namespace MISA.CukCuk.Api
     /// Api khách hàng
     /// </summary>
     /// CreatedBy: dvvuong (16/01/2021)
-    [Route("api/v1/[controller]")]
     public class CustomersController : BaseEntityController<Customer>
     {
         ICustomerService _customerService;

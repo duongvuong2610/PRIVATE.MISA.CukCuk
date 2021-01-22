@@ -1,4 +1,5 @@
 ﻿$(document).ready(function () {
+    $('.m-dialog').hide();
     new EmployeeJS();
 })
 

@@ -16,8 +16,8 @@
         /*width: 750px;*/
         /*height: 580px;*/
         z-index: 1000;
-        top: calc(50% - 290px);
-        left: calc(50% - 375px);
+        top: calc(50% - 420px);
+        left: calc(50% - 395px);
         background-color: #ffffff;
         border-radius: 5px;
     }
@@ -62,15 +62,14 @@
             padding: 0 24px 24px 24px;
         }
 
-        .m-dialog .dialog-footer {
-            height: 60px;
-            background-color: #bbb;
-            border-radius: 0 0 5px 5px;
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            
-        }
+    .m-dialog .dialog-footer {
+        height: 60px;
+        background-color: #E9EBEE;
+        border-radius: 0 0 5px 5px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
 
             .m-dialog .dialog-footer .m-btn-cancel {
                 border: none;
@@ -105,3 +104,21 @@
 .input-dialog-focus:focus {
     border: 1px solid #01b075;
 }
+
+.dialog-mini-header{
+    margin: 0;
+    font-size: 15px;
+    margin-top: 20px;
+}
+    .dialog-mini-header:after {
+        content: "";
+        display: block;
+        background: #019160 left center no-repeat;
+        width: 100px;
+        height: 4px;
+        margin-top: 5px;
+    }
+
+    .m-control{
+        width: 230px;
+    }

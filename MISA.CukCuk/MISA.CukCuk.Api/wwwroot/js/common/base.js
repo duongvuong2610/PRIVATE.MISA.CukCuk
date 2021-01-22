@@ -12,7 +12,6 @@ class BaseJS {
 
     }
 
-
     initEvents() {
         var me = this;
         // Sự kiện click khi nhấn thêm mới
@@ -28,7 +27,6 @@ class BaseJS {
         // Thực hiện lưu dữ liệu khi nhấn button [Lưu] trên form form thêm
         $('#btnSave').click(me.btnSaveOnClick.bind(me))
 
-       
 
         // Hiển thi thông tin chi tiết khi nhấn đúp chuột vào 1 bản ghi trên danh sách dữ liệu
 
@@ -134,6 +132,7 @@ class BaseJS {
                 method: "GET",
                 async: false,
             }).done(function (res) {
+                console.log(res);
                 $.each(res, function (index, obj) {
                     var tr = $(`<tr></tr>`);
                     $(tr).data('recordId', obj.CustomerId);
@@ -188,12 +187,54 @@ class BaseJS {
         try {
             var me = this;
             me.FormMode = 'Add';
+            $("#txtEmployeeCode").focus();
             // Hiển thị dialog thông tin chi tiết
             $('.m-dialog').show();
             $('input').val(null);
             // load dữ liệu cho các combobox
-            var select = $('select#cbxCustomerGroup');
-            select.empty();
+            var selects = $('select[api]');
+            $.each(selects, function (index, select) {
+                $(select).empty();
+                var api = $(select).attr('api');
+                if (api == "/api/v1/positions") {
+                    // lấy dữ liệu combobox
+                    $('.loading').show();
+                    $.ajax({
+                        url: me.host + api,
+                        method: "GET",
+                    }).done(function (res) {
+                        if (res) {
+                            $.each(res, function (index, obj) {
+                                var option = $(`<option value="${obj.PositionId}">${obj.PositionName}</option>`);
+                                $('select[fieldName=PositionName]').append(option);
+                            })
+
+                        }
+                        $('.loading').hide();
+                    }).fail(function (res) {
+                        $('.loading').hide();
+                    })
+                }
+                if (api == "/api/v1/departments") {
+                    // lấy dữ liệu combobox
+                    $('.loading').show();
+                    $.ajax({
+                        url: me.host + api,
+                        method: "GET",
+                    }).done(function (res) {
+                        if (res) {
+                            $.each(res, function (index, obj) {
+                                var option = $(`<option value="${obj.DepartmentId}">${obj.DepartmentName}</option>`);
+                                $('select[fieldName=DepartmentName]').append(option);
+                            })
+
+                        }
+                        $('.loading').hide();
+                    }).fail(function (res) {
+                        $('.loading').hide();
+                    })
+                }
+            })
             // lấy dữ liệu nhóm khách hàng
             $('.loading').show();
             $.ajax({
@@ -236,9 +277,11 @@ class BaseJS {
         // thu thập thông tin dữ liệu được nhập -> build thành object
         // lấy tất cả các control nhập liệu
         var inputs = $('input[fieldName], select[fieldName]');
+
         var entity = {};
         $.each(inputs, function (index, input) {
             var propertyName = $(this).attr('fieldName');
+            var propertyValue = $(this).attr('fieldValue');
             var value = $(this).val();
             // check với trường hợp input là radio, thì chỉ lấy value của input có attribute là checked
             if ($(this).attr("type") == "radio") {
@@ -246,10 +289,14 @@ class BaseJS {
                     entity[propertyName] = value;
                 }
             }
+            else if (propertyValue) {
+                entity[propertyValue] = value;
+            }
             else {
                 entity[propertyName] = value;
             }
         })
+        debugger;
         // gọi service tương ứng thực hiện lưu dữ liệu
         var method = "POST";
         if (me.FormMode == "Edit") {
@@ -266,11 +313,12 @@ class BaseJS {
             // + đưa ra thông báo thành công
             // + ẩn form chi tiết
             // + load lại dữ liệu
-            alert("Thêm dữ liệu thành công");
+            //alert("Thêm dữ liệu thành công");
+            res.Messenger
             $('.m-dialog').hide();
             me.loadData();
         }).fail(function (res) {
-            alert("fail insert data");
+            alert("Thêm dữ liệu thất bại");
         })
     }
 

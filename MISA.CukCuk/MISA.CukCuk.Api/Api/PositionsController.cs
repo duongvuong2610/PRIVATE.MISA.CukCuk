@@ -9,18 +9,12 @@ using System.Threading.Tasks;
 
 namespace MISA.CukCuk.Web.Api
 {
-    public class EmployeesController : BaseEntityController<Employee>
+    public class PositionsController : BaseEntityController<Position>
     {
-        IEmployeeService _employeeService;
-
-        #region Constructor
-        public EmployeesController(IEmployeeService employeeService):base(employeeService)
+        IPositionService _positionService;
+        public PositionsController(IPositionService positionService):base(positionService)
         {
-            _employeeService = employeeService;
+            _positionService = positionService;
         }
-
-        #endregion
-
-
     }
 }

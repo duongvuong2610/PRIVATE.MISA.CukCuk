@@ -105,7 +105,7 @@ namespace MISA.ApplicationCore.Services
                     if (entityDuplicate != null)
                     {
                         isValidate = false;
-                        mesArr.Add($"Thông tin {displayName} đã có trên hệ thông");
+                        mesArr.Add(string.Format(Properties.Resources.Msg_Dulicate, displayName));
                         _serviceResult.MISACode = Enums.MISACode.NotValid;
                         _serviceResult.Messenger = Properties.Resources.Msg_IsNotValid;
                     }
