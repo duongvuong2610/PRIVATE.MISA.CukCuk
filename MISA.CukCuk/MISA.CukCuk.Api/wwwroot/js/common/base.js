@@ -279,13 +279,16 @@ class BaseJS {
             data: JSON.stringify(entity),
             contentType: 'application/json',
         }).done(function (res) {
+            debugger
             // sau khi lưu thành công thi: 
             // + đưa ra thông báo thành công
             // + ẩn form chi tiết
             // + load lại dữ liệu
-            
-            $(".inform-success").show().delay(6000).fadeOut(
 
+            var showPopup = $('div .warning-success');
+            showPopup.empty();
+            showPopup.append($(`<i class="fas fa-info-circle"></i>&nbsp;<p>` + res.Messenger + `</p>`));
+            $(".m-inform").show().delay(6000).fadeOut(
             );
    
             $('.m-dialog').hide();
@@ -315,6 +318,11 @@ class BaseJS {
      * */
     btnRefreshOnClick() {
         var me = this;
+        var showPopup = $('div .warning-success');
+        showPopup.empty();
+        showPopup.append($(`<i class="fas fa-info-circle"></i>&nbsp;<p>` + `Load dữ liệu thành công` + `</p>`));
+        $(".m-inform").show().delay(6000).fadeOut(
+        );
         me.loadData();
     }
 

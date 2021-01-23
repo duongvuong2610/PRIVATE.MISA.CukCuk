@@ -125,7 +125,7 @@
         font-size: 24px;
         color: #F65454;
     }
-.inform-success {
+.m-inform {
     position: fixed;
     top: 60px;
     right: 250px;
@@ -133,16 +133,16 @@
     display: none;
 }
 
-.inform-success .warning-success {
-    background-color: #BAFFE7;
-    height: 48px;
-    line-height: 48px;
-    border-radius: 4px;
-    font-size: 13px;
-    padding: 0 15px;
-    display: flex;
-    align-items: center;
-}
+    .m-inform .warning-success {
+        background-color: #BAFFE7;
+        height: 48px;
+        line-height: 48px;
+        border-radius: 4px;
+        font-size: 13px;
+        padding: 0 15px;
+        display: flex;
+        align-items: center;
+    }
 
 .warning-success i {
     font-size: 24px;
