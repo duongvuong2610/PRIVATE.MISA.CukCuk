@@ -62,7 +62,7 @@ namespace MISA.ApplicationCore.Services
             if (isValid == true)
             {
                 _serviceResult.Data = _baseRepository.Update(entity);
-                _serviceResult.MISACode = Enums.MISACode.IsValid;
+                _serviceResult.MISACode = Enums.MISACode.Success;
                 _serviceResult.Messenger = Properties.Resources.Msg_UpdateSuccess;
                 return _serviceResult;
             }

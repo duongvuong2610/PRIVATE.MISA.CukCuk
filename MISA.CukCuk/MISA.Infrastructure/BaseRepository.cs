@@ -43,7 +43,6 @@ namespace MISA.Infrastructure
                 // thực thi commandText
                 recordAffects = _dbConnection.Execute($"Proc_Insert{_tableName}", param: parameters, commandType: CommandType.StoredProcedure);
                 transaction.Commit();
-                // trả về kết quả (số bản ghi thêm mới được)
                 //return recordAffects;
                 //try
                 //{
@@ -105,12 +104,18 @@ namespace MISA.Infrastructure
 
         public int Update(TEntity entity)
         {
+            var recordAffects = 0;
+            _dbConnection.Open();
+            using (var transaction = _dbConnection.BeginTransaction())
+            {
+                // Xử lý các kiểu dữ liệu (mapping dateType)
+                var parameters = MappingDbType(entity);
+                // thực thi commandText
+                recordAffects = _dbConnection.Execute($"Proc_Update{_tableName}", param: parameters, commandType: CommandType.StoredProcedure);
+                transaction.Commit();
+                // trả về kết quả (số bản ghi thêm mới được)
+            }
 
-            // Xử lý các kiểu dữ liệu (mapping dateType)
-            var parameters = MappingDbType(entity);
-            // thực thi commandText
-            var recordAffects = _dbConnection.Execute($"Proc_Update{_tableName}", param: parameters, commandType: CommandType.StoredProcedure);
-            // trả về kết quả (số bản ghi thêm mới được)
             return recordAffects;
         }
 

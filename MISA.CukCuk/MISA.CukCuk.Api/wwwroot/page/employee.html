@@ -198,7 +198,7 @@
                             </div>
                             <div class="m-row">
                                 <div class="m-label">Giới tính</div>
-                                <select id="cbxCustomerGroup" fieldName="Gender" class="m-control m-select input-dialog-focus">
+                                <select id="cbxGender" fieldName="Gender" class="m-control m-select input-dialog-focus">
                                     <option value="0">Nam</option>
                                     <option value="1">Nữ</option>
                                     <option value="2">Khác</option>
@@ -228,7 +228,7 @@
                         <div class="m-display-flex">
                             <div class="m-row m-row-margin">
                                 <div class="m-label">Email (<span class="field-important">*</span>)</div>
-                                <div class="m-control"><input id="txtEmail" type="text" fieldName="Email" class="input-dialog-focus" required /></div>
+                                <div class="m-control"><input id="txtEmail" type="email" fieldName="Email" class="input-dialog-focus" required /></div>
                             </div>
                             <div class="m-row">
                                 <div class="m-label">Số điện thoại (<span class="field-important">*</span>)</div>
@@ -267,7 +267,7 @@
                             </div>
                             <div class="m-row">
                                 <div class="m-label">Tình trạng công việc</div>
-                                <select id="cbxPosition" fieldName="WorkStatus" fieldValue="" class="m-control m-select input-dialog-focus">
+                                <select id="cbxWorkStatus" fieldName="WorkStatus" fieldValue="" class="m-control m-select input-dialog-focus">
                                     <option value="0">Nghỉ việc</option>
                                     <option value="1">Đang làm việc</option>
                                 </select>
@@ -296,13 +296,14 @@
         </div>
     </div>
 
-    <div id="pop-up" >
+
+    <div id="pop-up">
         <b style="font-size: 15px; font-weight: bold;">Pop-up thông báo</b>
         <ul>
             <!--<li><i class="fas fa-exclamation-triangle"></i>Thông tin số điện thoại đã có trên hệ thống</li>
             <li><i class="fas fa-exclamation-triangle"></i>Email đã có trên hệ thống</li>-->
         </ul>
-        
+
     </div>
 
     <script src="/lib/jquery-3.5.1.min.js"></script>
