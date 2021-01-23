@@ -1246,7 +1246,7 @@
           <GeneratorDescription>values based on a regular expression</GeneratorDescription>
           <Length>20</Length>
         </Column>
-        <Column Name="Salaty">
+        <Column Name="Salary">
           <Checked>true</Checked>
           <DataType>DOUBLE</DataType>
           <GeneratorOptions xsi:type="MySqlDoubleGeneratorOptions">
@@ -1257,8 +1257,8 @@
             <Increment xsi:type="xsd:double">1</Increment>
             <ValueDistributionMode>Seed</ValueDistributionMode>
             <SeedValue>8</SeedValue>
-            <MinValue>10000000</MinValue>
-            <MaxValue>25000000</MaxValue>
+            <MinValue>15000000</MinValue>
+            <MaxValue>45000000</MaxValue>
             <UseDefault>false</UseDefault>
             <DefaultValue>NULL</DefaultValue>
           </GeneratorOptions>
@@ -1292,7 +1292,7 @@
           <GeneratorName>date</GeneratorName>
           <GeneratorDescription>fill with date values</GeneratorDescription>
         </Column>
-        <Column Name="WorkStatusName">
+        <Column Name="WorkStatus">
           <Checked>true</Checked>
           <DataType>INT</DataType>
           <GeneratorOptions xsi:type="MySqlIntegerGeneratorOptions">
@@ -1332,7 +1332,7 @@
             <OffsetFromColumnMinDays>0</OffsetFromColumnMinDays>
             <OffsetFromColumnMaxDays>7</OffsetFromColumnMaxDays>
             <MinDate>2019-01-01T00:00:00</MinDate>
-            <MaxDate>2021-01-13T00:00:00+07:00</MaxDate>
+            <MaxDate>2020-01-13T00:00:00+07:00</MaxDate>
             <IsRandomizeDate>true</IsRandomizeDate>
           </GeneratorOptions>
           <GeneratorType>MySqlDateGenerator</GeneratorType>

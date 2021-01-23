@@ -117,10 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Msg_AddSuccess" xml:space="preserve">
+    <value>Thêm dữ liệu thành công</value>
+  </data>
   <data name="Msg_Dulicate" xml:space="preserve">
     <value>Thông tin {0} đã có trên hệ thống</value>
   </data>
   <data name="Msg_IsNotValid" xml:space="preserve">
     <value>Dữ liệu không hợp lệ</value>
+  </data>
+  <data name="Msg_Required" xml:space="preserve">
+    <value>Thông tin {0} không được phép để trống</value>
+  </data>
+  <data name="Msg_UpdateSuccess" xml:space="preserve">
+    <value>Chỉnh sửa dữ liệu thành công</value>
   </data>
 </root>

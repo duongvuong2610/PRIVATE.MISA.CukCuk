@@ -152,11 +152,9 @@ class BaseJS {
                                 value = formatMoney(value);
                                 break;
                             case "Gender":
-                                td.addClass("text-align-right");
                                 value = formatGender(value);
                                 break;
                             case "WorkStatus":
-                                td.addClass("text-align-right");
                                 value = formatWorkStatus(value);
                                 break;
                             default:
@@ -185,9 +183,10 @@ class BaseJS {
      * */
     btnAddOnClick() {
         try {
+
             var me = this;
             me.FormMode = 'Add';
-            $("#txtEmployeeCode").focus();
+            $('#txtEmployeeCode').focus();
             // Hiển thị dialog thông tin chi tiết
             $('.m-dialog').show();
             $('input').val(null);
@@ -264,13 +263,13 @@ class BaseJS {
     btnSaveOnClick() {
         var me = this;
         // Validate dữ liệu
-        var inputValidate = $('input[required], input[type = "email"]');
+        var inputValidate = $('input[required], input[type ="email"]');
         $.each(inputValidate, function (index, input) {
             $(input).trigger('blur');
         })
         var inputNotValis = $('input[validate="false"]');
         if (inputNotValis && inputNotValis.length > 0) {
-            alert("Dữ liệu không hợp lệ vui lòng kiểm tra lại.");
+            $(".warning").show().delay(3000).fadeOut();
             inputNotValis[0].focus();
             return;
         }
@@ -296,7 +295,6 @@ class BaseJS {
                 entity[propertyName] = value;
             }
         })
-        debugger;
         // gọi service tương ứng thực hiện lưu dữ liệu
         var method = "POST";
         if (me.FormMode == "Edit") {
@@ -313,12 +311,29 @@ class BaseJS {
             // + đưa ra thông báo thành công
             // + ẩn form chi tiết
             // + load lại dữ liệu
-            //alert("Thêm dữ liệu thành công");
-            res.Messenger
-            $('.m-dialog').hide();
+            
+            $(".inform-success").show().delay(5000).fadeOut(
+                function () {
+                    $('.m-dialog').hide();
+                }
+            )
             me.loadData();
+            
         }).fail(function (res) {
-            alert("Thêm dữ liệu thất bại");
+            var MISACode = res.responseJSON["MISACode"];
+            var Msgs = res.responseJSON["Data"];
+            if (MISACode == 900) {
+                var ul = $('#pop-up ul');
+                ul.empty();
+                for (var i = 0; i < Msgs.length; i++) {
+                    var value = Msgs[i];
+                    var li = $('<li><i class="fas fa-exclamation-triangle"></i></li>');
+                    li.append(value);
+                    ul.append(li);
+                }
+                $("#pop-up").show().delay(5000).fadeOut();
+            }
+            
         })
     }
 

@@ -24,6 +24,7 @@
     .m-dialog .dialog-header{
         display: flex;
         padding: 24px 24px 0 24px;
+        position: relative;
     }
         .m-dialog .dialog-header .dialog-header-close{
             position: absolute;

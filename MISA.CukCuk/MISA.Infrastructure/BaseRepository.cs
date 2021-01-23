@@ -38,23 +38,24 @@ namespace MISA.Infrastructure
             _dbConnection.Open();
             using (var transaction = _dbConnection.BeginTransaction())
             {
-                try
-                {
-                    // Xử lý các kiểu dữ liệu (mapping dateType)
-                    var parameters = MappingDbType(entity);
-                    // thực thi commandText
-                    recordAffects = _dbConnection.Execute($"Proc_Insert{_tableName}", param: parameters, commandType: CommandType.StoredProcedure);
-                    transaction.Commit();
-                    // trả về kết quả (số bản ghi thêm mới được)
-                    return recordAffects;
-                }
-                catch (Exception)
-                {
-                    transaction.Rollback();
-                }
+                // Xử lý các kiểu dữ liệu (mapping dateType)
+                var parameters = MappingDbType(entity);
+                // thực thi commandText
+                recordAffects = _dbConnection.Execute($"Proc_Insert{_tableName}", param: parameters, commandType: CommandType.StoredProcedure);
+                transaction.Commit();
+                // trả về kết quả (số bản ghi thêm mới được)
+                //return recordAffects;
+                //try
+                //{
+
+                //}
+                //catch (Exception)
+                //{
+                //    transaction.Rollback();
+                //}
             }
             return recordAffects;
-               
+
         }
 
         public int Delete(Guid entityId)
@@ -76,9 +77,8 @@ namespace MISA.Infrastructure
 
         public IEnumerable<TEntity> GetEntities()
         {
-            // tạo commandText
+            
             var entities = _dbConnection.Query<TEntity>($"Proc_Get{_tableName}s", commandType: CommandType.StoredProcedure);
-            // trả về dữ liệu 
             return entities;
         }
 
@@ -105,6 +105,7 @@ namespace MISA.Infrastructure
 
         public int Update(TEntity entity)
         {
+
             // Xử lý các kiểu dữ liệu (mapping dateType)
             var parameters = MappingDbType(entity);
             // thực thi commandText
@@ -133,6 +134,7 @@ namespace MISA.Infrastructure
                 {
                     propertyValue = property.GetValue(entity).ToString();
                 }
+             
                 
                 parameters.Add($"@{propertyName}", propertyValue);
             }

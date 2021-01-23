@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
-
+    <link href="/content/fontawesome-5.15.1/css/all.css" rel="stylesheet" />
     <link href="/css/common/main.css" rel="stylesheet" />
     <link href="/css/common/icon.css" rel="stylesheet" />
     <link href="/css/common/button.css" rel="stylesheet" />
@@ -106,7 +106,7 @@
                     <col style="width: 100px" />
                     <col style="width: 150px" />
                     <col style="width: 150px" />
-                    <col style="width: 200px" />
+                    <col style="width: 250px" />
                     <col style="width: 200px" />
                     <col style="width: 150px" />
                     <col style="width: 300px" />
@@ -163,6 +163,12 @@
                 <div class="dialog-header-close">
                     <button id="btnClose"></button>
                 </div>
+                <div class="warning">
+                    <div class="warning-notvalid">
+                        <i class="fas fa-info-circle"></i> <p>&nbsp;Dữ liệu không hợp lệ vui lòng kiểm tra lại.</p>
+                    </div>
+                </div>
+
             </div>
             <div class="dialog-body">
                 <div class="dialog-body-top m-display-flex">
@@ -211,11 +217,11 @@
                                 <div class="m-control m-user-date"><input id="dtIdentityCardDate" fieldName="IdentityCardDate" type="date" class="input-dialog-focus" /></div>
                             </div>
                         </div>
-                       
+
                         <div class="m-display-flex">
                             <div class="m-row m-row-margin">
                                 <div class="m-label">Nơi cấp</div>
-                                <div class="m-control"><input id="txtIdentityCardPlace" type="text" fieldName="IdentityCardPlace" class="input-dialog-focus" required /></div>
+                                <div class="m-control"><input id="txtIdentityCardPlace" type="text" fieldName="IdentityCardPlace" class="input-dialog-focus" /></div>
                             </div>
 
                         </div>
@@ -247,7 +253,7 @@
                         <div class="m-display-flex">
                             <div class="m-row m-row-margin">
                                 <div class="m-label">Mã số thuế cá nhân</div>
-                                <div class="m-control"><input id="txtEmployeeTaxCode" type="text" fieldName="EmployeeTaxCode" class="input-dialog-focus" required /></div>
+                                <div class="m-control"><input id="txtEmployeeTaxCode" type="text" fieldName="EmployeeTaxCode" class="input-dialog-focus" /></div>
                             </div>
                             <div class="m-row">
                                 <div class="m-label">Mức lương cơ bản</div>
@@ -269,7 +275,7 @@
                         </div>
                     </div>
                 </div>
-               
+
             </div>
             <div class="dialog-footer">
                 <button id="btnCancel" class="m-btn-cancel">Hủy</button>
@@ -281,6 +287,22 @@
 
             </div>
         </div>
+
+    </div>
+
+    <div class="inform-success">
+        <div class="warning-success">
+            <i class="fas fa-info-circle"></i> <p>&nbsp;Thêm dữ liệu thành công.</p>
+        </div>
+    </div>
+
+    <div id="pop-up" >
+        <b style="font-size: 15px; font-weight: bold;">Pop-up thông báo</b>
+        <ul>
+            <!--<li><i class="fas fa-exclamation-triangle"></i>Thông tin số điện thoại đã có trên hệ thống</li>
+            <li><i class="fas fa-exclamation-triangle"></i>Email đã có trên hệ thống</li>-->
+        </ul>
+        
     </div>
 
     <script src="/lib/jquery-3.5.1.min.js"></script>

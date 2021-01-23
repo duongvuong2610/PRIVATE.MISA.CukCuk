@@ -34,6 +34,7 @@ namespace MISA.ApplicationCore.Entities
         /// </summary>
         /// 
         [Required]
+        [DisplayName("Họ và tên")]
         public string FullName { get; set; }
 
         /// <summary>
@@ -49,6 +50,10 @@ namespace MISA.ApplicationCore.Entities
         /// <summary>
         /// Số chứng minh thư nhân dân
         /// </summary>
+        /// 
+        [Required]
+        [CheckDuplicate]
+        [DisplayName("Số chứng minh thư nhân dân")]
         public string IdentityCardCode { get; set; }
 
         /// <summary>
@@ -67,6 +72,7 @@ namespace MISA.ApplicationCore.Entities
         /// 
         [Required]
         [CheckDuplicate]
+        [DisplayName("Email")]
         public string Email { get; set; }
 
         /// <summary>
@@ -75,6 +81,7 @@ namespace MISA.ApplicationCore.Entities
         /// 
         [Required]
         [CheckDuplicate]
+        [DisplayName("Số điện thoại")]
         public string PhoneNumber { get; set; }
 
         /// <summary>

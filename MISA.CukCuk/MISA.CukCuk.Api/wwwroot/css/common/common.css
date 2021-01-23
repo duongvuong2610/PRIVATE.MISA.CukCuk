@@ -102,3 +102,81 @@
 .row-out-seleted{
     background-color: none;
 }
+
+.warning {
+    position: absolute;
+    top: 0px;
+    right: 50px;
+    display: none;
+}
+.warning-notvalid {
+    background-color: #FFCECE;
+    height: 48px;
+    line-height: 48px;
+    border-radius: 4px;
+    font-size: 13px;
+    z-index: 1500;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+}
+
+    .warning-notvalid i {
+        font-size: 24px;
+        color: #F65454;
+    }
+.inform-success{
+    position: fixed;
+    top: 60px;
+    right: 250px;
+    z-index: 1600;
+    display: none;
+}
+
+.inform-success .warning-success {
+    background-color: #BAFFE7;
+    height: 48px;
+    line-height: 48px;
+    border-radius: 4px;
+    font-size: 13px;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+}
+
+.warning-success i {
+    font-size: 24px;
+    color: #01B075;
+}
+
+
+/**
+    Pop-up thông báo
+*/
+
+#pop-up{
+    position: fixed;
+    top: 60px;
+    right: 250px;
+    width: 300px;
+    padding: 24px;
+    background-color: #fff;
+    z-index: 1800;
+    border-radius: 5px;
+    display: none;
+}
+    #pop-up i {
+        font-size: 24px;
+        color: #F65454;
+        margin-right: 5px;
+    }
+
+    #pop-up ul{
+        list-style-type: none;
+        padding: 0;
+    }
+    #pop-up ul li {
+        display: flex;
+        align-items: center;
+        margin-bottom: 5px;
+    }

@@ -29,7 +29,8 @@ namespace MISA.ApplicationCore.Services
             if(isValid == true)
             {
                 _serviceResult.Data = _baseRepository.Add(entity);
-                _serviceResult.MISACode = Enums.MISACode.IsValid;
+                _serviceResult.MISACode = Enums.MISACode.Success;
+                _serviceResult.Messenger = Properties.Resources.Msg_AddSuccess;
                 return _serviceResult;
             }
             else
@@ -62,6 +63,7 @@ namespace MISA.ApplicationCore.Services
             {
                 _serviceResult.Data = _baseRepository.Update(entity);
                 _serviceResult.MISACode = Enums.MISACode.IsValid;
+                _serviceResult.Messenger = Properties.Resources.Msg_UpdateSuccess;
                 return _serviceResult;
             }
             else
@@ -80,19 +82,19 @@ namespace MISA.ApplicationCore.Services
             {
                 var propertyValue = property.GetValue(entity);
                 var displayName = string.Empty;
-                var displayNameAtributes = property.GetCustomAttributes(typeof(DisplayName), true);
-                if(displayNameAtributes.Length > 0)
+                var displayNameAttributes = property.GetCustomAttributes(typeof(DisplayName), true);
+                if(displayNameAttributes.Length > 0)
                 {
-                    displayName = (displayNameAtributes[0] as DisplayName).Name;
+                    displayName = (displayNameAttributes[0] as DisplayName).Name;
                 }
                 // kiểm tra xem có attribute cần phải validate không
                 if (property.IsDefined(typeof(Required), false))
                 {
                     // check bat buoc nhap
-                    if (propertyValue == null)
+                    if (propertyValue == null || propertyValue.ToString() == "")
                     {
                         isValidate = false;
-                        mesArr.Add(string.Format(Properties.Resources.Msg_Dulicate, displayName));
+                        mesArr.Add(string.Format(Properties.Resources.Msg_Required, displayName));
                         _serviceResult.MISACode = Enums.MISACode.NotValid;
                         _serviceResult.Messenger = Properties.Resources.Msg_IsNotValid;
                     }
