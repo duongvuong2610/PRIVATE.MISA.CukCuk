@@ -53,6 +53,7 @@ class BaseJS {
             me.EmployeeCode = recordCode;
             console.log(recordId);
             // gọi service lấy thông tin chi tiết qua id
+            $('.loading').show();
             $.ajax({
                 url: me.host + me.apiRouter + `/${recordId}`,
                 method: 'GET',
@@ -109,8 +110,9 @@ class BaseJS {
                     }
                     $(this).val(value);
                 })
+                $('.loading').hide();
             }).fail(function (res) {
-
+                $('.loading').hide();
             })
             $('.m-dialog').show();
         })
@@ -134,7 +136,6 @@ class BaseJS {
                 data: JSON.stringify(),
                 contentType: 'application/json',
             }).done(function (res) {
-                debugger
                 // sau khi lưu thành công thi: 
                 // + đưa ra thông báo thành công
                 // + ẩn form chi tiết
@@ -183,6 +184,24 @@ class BaseJS {
             else {
                 $(this).removeClass('border-red');
                 $(this).attr('validate', true);
+            }
+        })
+
+        /*
+         validate Email
+         */
+        $('input[type="email"]').blur(function () {
+            var valueToTest = $(this).val();
+            var testEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+            if (!testEmail.test(valueToTest)) {
+                $(this).addClass('border-red');
+                $(this).attr('title', 'Email không đúng định dạng');
+                $(this).attr("validate", false);
+            }
+            else {
+                $(this).removeClass('border-red');
+                $(this).attr("validate", true);
             }
         })
 
@@ -384,13 +403,14 @@ class BaseJS {
      * Author: dvvuong (12/01/2021)
      * */
     btnRefreshOnClick() {
+        
         var me = this;
+        me.loadData();
         var showPopup = $('div .warning-success');
         showPopup.empty();
         showPopup.append($(`<i class="fas fa-info-circle"></i>&nbsp;<p>` + `Load dữ liệu thành công` + `</p>`));
         $(".m-inform").show().delay(6000).fadeOut(
         );
-        me.loadData();
     }
 
     /**------------------------------------------
