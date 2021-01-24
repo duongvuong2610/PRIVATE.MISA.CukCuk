@@ -125,6 +125,47 @@ class BaseJS {
             $('#m-popup-confirmDel').show();
         });
 
+        // Thực hiện xóa record khi nhấn nút [Xóa] trên form giao diện xác nhận xóa
+        $('#btnDel').click(function () {
+            var stringUrl = me.host + me.apiRouter + `/${me.EmployeeId}`;
+            $.ajax({
+                url: stringUrl,
+                method: 'DELETE',
+                data: JSON.stringify(),
+                contentType: 'application/json',
+            }).done(function (res) {
+                debugger
+                // sau khi lưu thành công thi: 
+                // + đưa ra thông báo thành công
+                // + ẩn form chi tiết
+                // + load lại dữ liệu
+
+                var showPopup = $('div .warning-success');
+                showPopup.empty();
+                showPopup.append($(`<i class="fas fa-info-circle"></i>&nbsp;<p>` + res.Messenger + `</p>`));
+                $(".m-inform").show().delay(7000).fadeOut(
+                );
+                $('#m-popup-confirmDel').hide();
+                $('.m-dialog').hide();
+                me.loadData();
+
+            }).fail(function (res) {
+                var MISACode = res.responseJSON.MISACode;
+                var Msgs = res.responseJSON["Data"];
+                if (MISACode == 900) {
+                    var ul = $('#pop-up ul');
+                    ul.empty();
+                    for (var i = 0; i < Msgs.length; i++) {
+                        var value = Msgs[i];
+                        var li = $('<li><i class="fas fa-exclamation-triangle"></i></li>');
+                        li.append(value);
+                        ul.append(li);
+                    }
+                    $("#pop-up").show().delay(5000).fadeOut();
+                }
+            })
+        });
+
 
        
         /*
