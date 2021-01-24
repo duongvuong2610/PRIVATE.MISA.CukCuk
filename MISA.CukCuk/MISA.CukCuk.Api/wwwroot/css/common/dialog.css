@@ -234,3 +234,17 @@
 .m-btn-del button:hover{
     cursor: pointer;
 }
+
+/*.vnd-position{*/
+    /*position: relative;*/
+/*}
+
+#vnd {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+}*/
+
+#txtSalary{
+    text-align: right;
+}

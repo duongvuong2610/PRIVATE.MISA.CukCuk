@@ -5,8 +5,13 @@ using System.Text;
 
 namespace MISA.ApplicationCore.Interfaces
 {
+    /// <summary>
+    /// Interface Service khách hàng
+    /// </summary>
+    /// CreatedBy: DVVUONG (18/01/2021)
     public interface ICustomerService : IBaseService<Customer>
     {
+        #region Method
         /// <summary>
         /// Lấy dữ liệu phân trang
         /// </summary>
@@ -23,5 +28,6 @@ namespace MISA.ApplicationCore.Interfaces
         /// <returns>list khách hàng</returns>
         /// CreatedBy: DVVUONG (19/01/2021)
         IEnumerable<Customer> GetCustomerByGroup(Guid groupId);
+        #endregion
     }
 }

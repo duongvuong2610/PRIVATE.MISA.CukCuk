@@ -10,6 +10,7 @@ namespace MISA.ApplicationCore.Entities
     /// CreatedBy: DVUONG (22/01/2021)
     public class Department:BaseEntity
     {
+        #region Property
         /// <summary>
         /// Id phòng ban
         /// </summary>
@@ -29,6 +30,6 @@ namespace MISA.ApplicationCore.Entities
         /// Mô tả
         /// </summary>
         public string Description { get; set; }
-
+        #endregion
     }
 }

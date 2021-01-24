@@ -13,13 +13,19 @@ namespace MISA.CukCuk.Web.Api
     /// <summary>
     /// Api nhóm khách hàng
     /// </summary>
+    /// CreatedBy: DVVUONG (21/01/2021)
 
     public class CustomerGroupsController : BaseEntityController<CustomerGroup>
     {
+        #region Declare
         IBaseService<CustomerGroup> _baseService;
+        #endregion
+
+        #region Constructor
         public CustomerGroupsController(IBaseService<CustomerGroup> baseService):base(baseService)
         {
             _baseService = baseService;
         }
+        #endregion
     }
 }

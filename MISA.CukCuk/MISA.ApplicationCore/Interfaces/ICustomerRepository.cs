@@ -6,7 +6,7 @@ using System.Text;
 namespace MISA.ApplicationCore.Interfaces
 {
     /// <summary>
-    /// Interface danh mục khách hàng
+    /// Interface Repository khách hàng
     /// </summary>
     /// CreatedBy: DVVUONG (18/01/2021)
     public interface ICustomerRepository : IBaseRepository<Customer>

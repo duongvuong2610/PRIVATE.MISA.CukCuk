@@ -157,7 +157,7 @@
 #pop-up{
     position: fixed;
     top: 60px;
-    right: 250px;
+    right: 100px;
     width: 300px;
     padding: 24px;
     background-color: #fff;

@@ -9,6 +9,7 @@ namespace MISA.ApplicationCore.Entities
     /// <summary>
     /// Nhóm khách hàng
     /// </summary>
+    /// CreatedBy: DVVUONG (18/01/2021)
     public class CustomerGroup
     {
 

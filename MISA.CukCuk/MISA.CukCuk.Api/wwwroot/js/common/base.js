@@ -205,6 +205,23 @@ class BaseJS {
             }
         })
 
+        /*
+         validate Salary
+         */
+        $('input[id="txtSalary"]').blur(function () {
+            var valueToTest = $(this).val();
+            var testSalary = /^\d+$/;
+            if (!testSalary.test(valueToTest)) {
+                $(this).addClass('border-red');
+                $(this).attr('title', 'Tiền lương không đúng định dạng');
+                $(this).attr("validate", false);
+            }
+            else {
+                $(this).removeClass('border-red');
+                $(this).attr("validate", true);
+            }
+        })
+
     }
 
     /**
@@ -281,7 +298,7 @@ class BaseJS {
 
             var me = this;
             me.FormMode = 'Add';
-            $('input #txtEmployeeCode').focus();
+            //$('input[id="txtEmployeeCode"]').focus();
             // Hiển thị dialog thông tin chi tiết
             $('.m-dialog').show();
             $('input').val(null);
@@ -316,7 +333,7 @@ class BaseJS {
     btnSaveOnClick() {
         var me = this;
         // Validate dữ liệu
-        var inputValidate = $('input[required], input[type ="email"]');
+        var inputValidate = $('input[required], input[type ="email"], input[id="txtSalary"]');
         $.each(inputValidate, function (index, input) {
             $(input).trigger('blur');
         })
@@ -347,6 +364,8 @@ class BaseJS {
             else {
                 entity[propertyName] = value;
             }
+            
+
         })
         // gọi service tương ứng thực hiện lưu dữ liệu
         var method = "POST";

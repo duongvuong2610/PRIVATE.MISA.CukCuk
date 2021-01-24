@@ -21,11 +21,15 @@ namespace MISA.CukCuk.Api
     /// CreatedBy: dvvuong (16/01/2021)
     public class CustomersController : BaseEntityController<Customer>
     {
+        #region Declare
         ICustomerService _customerService;
+        #endregion
 
+        #region Constructor
         public CustomersController(ICustomerService customerService) :base(customerService)
         {
             _customerService = customerService;
         }
+        #endregion
     }
 }

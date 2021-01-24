@@ -6,10 +6,17 @@ using System.Text;
 
 namespace MISA.ApplicationCore.Services
 {
+    /// <summary>
+    /// Base Service 
+    /// </summary>
+    /// <typeparam name="TEntity">object generic</typeparam>
+    /// CreatedBy: DVVUONG (18/01/2021)
     public class BaseService<TEntity> : IBaseService<TEntity> where TEntity:BaseEntity
     {
+        #region Declare
         IBaseRepository<TEntity> _baseRepository;
         ServiceResult _serviceResult;
+        #endregion
 
         #region Constructor
         public BaseService(IBaseRepository<TEntity> baseRepository)
@@ -21,6 +28,12 @@ namespace MISA.ApplicationCore.Services
         #endregion
 
         #region Method
+        /// <summary>
+        /// Thêm mới object
+        /// </summary>
+        /// <param name="entity">object</param>
+        /// <returns>Object chứa thông tin kết quả truy vấn</returns>
+        /// CreatedBy: DVVUONG (18/01/2021)
         public virtual ServiceResult Add(TEntity entity)
         {
             entity.EntityState = Enums.EntityState.AddNew;
@@ -39,6 +52,12 @@ namespace MISA.ApplicationCore.Services
             }
         }
 
+        /// <summary>
+        /// Xóa Object
+        /// </summary>
+        /// <param name="entityId">khóa chính</param>
+        /// <returns>Object chứa thông tin kết quả truy vấn</returns>
+        /// CreatedBy: DVVUONG (18/01/2021)
         public ServiceResult Delete(Guid entityId)
         {
             _serviceResult.Data = _baseRepository.Delete(entityId);
@@ -47,16 +66,33 @@ namespace MISA.ApplicationCore.Services
             return _serviceResult;
         }
 
+        /// <summary>
+        /// lấy toàn bộ danh sách đối tượng
+        /// </summary>
+        /// <returns>danh sách đối tượng</returns>
+        /// CreatedBy: DVVUONG (18/01/2021)
         public virtual IEnumerable<TEntity> GetEntities()
         {
             return _baseRepository.GetEntities();
         }
 
+        /// <summary>
+        /// lấy đối tượng theo khóa chính
+        /// </summary>
+        /// <param name="entityId">khóa chính</param>
+        /// <returns>object</returns>
+        /// CreatedBy: DVVUONG (18/01/2021)
         public TEntity GetEntityById(Guid entityId)
         {
             return _baseRepository.GetEntityById(entityId);
         }
 
+        /// <summary>
+        /// cập nhật thông tin object 
+        /// </summary>
+        /// <param name="entity">object</param>
+        /// <returns>Object chứa thông tin kết quả truy vấn</returns>
+        /// CreatedBy: DVVUONG (18/01/2021)
         public ServiceResult Update(TEntity entity)
         {
             entity.EntityState = Enums.EntityState.Update;
@@ -74,6 +110,12 @@ namespace MISA.ApplicationCore.Services
             }
         }
 
+        /// <summary>
+        /// Hàm kiểm tra dữ liệu/ nghiệp vụ
+        /// </summary>
+        /// <param name="entity">object</param>
+        /// <returns>boolean</returns>
+        /// CreatedBy: DVVUONG (18/01/2021)
         private bool Validate(TEntity entity)
         {
             var mesArr = new List<string>();

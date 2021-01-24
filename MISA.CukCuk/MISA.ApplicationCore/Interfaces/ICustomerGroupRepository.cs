@@ -5,6 +5,10 @@ using System.Text;
 
 namespace MISA.ApplicationCore.Interfaces
 {
+    /// <summary>
+    /// Interface Repository nhóm khách hàng
+    /// </summary>
+    /// CreatedBy: DVVUONG (18/01/2021)
     public interface ICustomerGroupRepository
     {
         #region Method

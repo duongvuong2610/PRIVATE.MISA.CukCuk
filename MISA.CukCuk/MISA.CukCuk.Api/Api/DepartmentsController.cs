@@ -9,13 +9,21 @@ using System.Threading.Tasks;
 
 namespace MISA.CukCuk.Web.Api
 {
+    /// <summary>
+    /// Api Phòng ban
+    /// </summary>
+    /// CreatedBy: DVVUONG (19/01/2021)
     public class DepartmentsController : BaseEntityController<Department>
     {
+        #region Declare
         IDepartmentService _departmentService;
+        #endregion
 
+        #region Constructor
         public DepartmentsController(IDepartmentService departmentService):base(departmentService)
         {
             _departmentService = departmentService;
         }
+        #endregion 
     }
 }

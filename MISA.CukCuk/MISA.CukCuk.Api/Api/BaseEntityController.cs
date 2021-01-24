@@ -9,23 +9,33 @@ using System.Threading.Tasks;
 
 namespace MISA.CukCuk.Web.Api
 {
+    /// <summary>
+    /// Base Constroller Api
+    /// </summary>
+    /// <typeparam name="TEntity">object generic</typeparam>
+    /// CreatedBy: DVVUONG (20/01/2021)
+
     [Route("api/v1/[controller]")]
     [ApiController]
     public class BaseEntityController<TEntity> : ControllerBase
     {
+        #region Declare
         IBaseService<TEntity> _baseService;
+        #endregion
 
+        #region Constructor
         public BaseEntityController(IBaseService<TEntity> baseService)
         {
             _baseService = baseService;
         }
+        #endregion
 
         #region Method
         /// <summary>
-        /// lấy toàn bộ khách hàng 
+        /// lấy toàn bộ danh sách
         /// </summary>
-        /// <returns>danh sách khách hàng</returns>
-        /// CreaedBy: dvvuong (18/01/2021)
+        /// <returns>IActionResult</returns>
+        /// CreaedBy: dvvuong (20/01/2021)
         [HttpGet]
         public IActionResult Get()
         {
@@ -34,10 +44,10 @@ namespace MISA.CukCuk.Web.Api
         }
 
         /// <summary>
-        /// lấy khách hàng theo id 
+        /// lấy danh sách theo id 
         /// </summary>
-        /// <returns>danh sách khách hàng</returns>
-        /// CreaedBy: dvvuong (18/01/2021)
+        /// <returns>IActionResult</returns>
+        /// CreaedBy: dvvuong (20/01/2021)
         [HttpGet("{id}")]
         public IActionResult Get(Guid id)
         {
@@ -47,11 +57,11 @@ namespace MISA.CukCuk.Web.Api
 
 
         /// <summary>
-        /// Thêm khách hàng
+        /// Thêm mới object
         /// </summary>
         /// <param name="customer">object</param>
-        /// <returns></returns>
-        /// CreatedBy: dvvuong (17/01/2021)
+        /// <returns>IActionResult</returns>
+        /// CreatedBy: dvvuong (20/01/2021)
         [HttpPost]
         public IActionResult Post([FromBody] TEntity entity)
         {
@@ -67,11 +77,11 @@ namespace MISA.CukCuk.Web.Api
         }
 
         /// <summary>
-        /// Chỉnh sửa thông tin khách hàng theo id
+        /// Chỉnh sửa thông tin object
         /// </summary>
         /// <param name="customer">object</param>
         /// <returns></returns>
-        /// CreatedBy: dvvuong (17/01/2021)
+        /// CreatedBy: dvvuong (20/01/2021)
         [HttpPut("{id}")]
         public IActionResult Put([FromRoute] string id ,[FromBody] TEntity entity)
         {
@@ -100,11 +110,11 @@ namespace MISA.CukCuk.Web.Api
         }
 
         /// <summary>
-        /// xóa khách hàng
+        /// xóa object
         /// </summary>
-        /// <param name="customerid">id</param>
+        /// <param name="customerid">khóa chính</param>
         /// <returns></returns>
-        /// createdby: dvvuong (17/01/2021)
+        /// Createdby: dvvuong (20/01/2021)
         [HttpDelete("{entityId}")]
         public IActionResult Delete(Guid entityId)
         {

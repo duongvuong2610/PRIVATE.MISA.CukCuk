@@ -7,6 +7,10 @@ using System.Text;
 
 namespace MISA.Infrastructure
 {
+    /// <summary>
+    /// Repository khách hàng
+    /// </summary>
+    /// CreatedBy: DVVUONG (19/01/2021)
     public class EmployeeRepository : BaseRepository<Employee>, IEmployeeRepository
     {
         #region Contructor

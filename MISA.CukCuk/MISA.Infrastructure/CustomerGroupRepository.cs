@@ -10,6 +10,10 @@ using System.Text;
 
 namespace MISA.Infrastructure
 {
+    /// <summary>
+    /// Repository nhóm khách hàng
+    /// </summary>
+    /// CreatedBy: DVVUONG (14/01/2021)
     public class CustomerGroupRepository : ICustomerGroupRepository
     {
         #region Declare
@@ -18,13 +22,16 @@ namespace MISA.Infrastructure
         IDbConnection _dbConnection = null;
         #endregion
 
+        #region Constructor
         public CustomerGroupRepository(IConfiguration configuration)
         {
             _configuration = configuration;
             _connectionString = _configuration.GetConnectionString("MISACukCukConnectionString");
             _dbConnection = new MySqlConnection(_connectionString);
         }
+        #endregion
 
+        #region Method
         public int AddCustomerGroup(CustomerGroup customerGroup)
         {
             throw new NotImplementedException();
@@ -54,5 +61,6 @@ namespace MISA.Infrastructure
         {
             throw new NotImplementedException();
         }
+        #endregion
     }
 }

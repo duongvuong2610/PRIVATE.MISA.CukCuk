@@ -9,9 +9,16 @@ using System.Text;
 
 namespace MISA.ApplicationCore
 {
+    /// <summary>
+    /// Service khách hàng
+    /// </summary>
+    /// CreatedBy: DVVUONG (18/01/2021)
     public class CustomerService : BaseService<Customer> ,ICustomerService
     {
+        #region Declare
         ICustomerRepository _customerRepository;
+        #endregion
+
         #region Constructor
         public CustomerService(ICustomerRepository customerRepository) :base(customerRepository)
         {

@@ -13,6 +13,11 @@ using System.Text;
 
 namespace MISA.Infrastructure
 {
+    /// <summary>
+    /// Base Repository
+    /// </summary>
+    /// <typeparam name="TEntity">object generic</typeparam>
+    /// CreatedBy: DVVUONG (17/01/2021)
     public class BaseRepository<TEntity> : IBaseRepository<TEntity>, IDisposable where TEntity: BaseEntity
     {
         #region Declare
@@ -32,6 +37,12 @@ namespace MISA.Infrastructure
         }
         #endregion
 
+        /// <summary>
+        /// Thực hiện thêm mới object
+        /// </summary>
+        /// <param name="entity">object</param>
+        /// <returns>số bản ghi bị ảnh hưởng</returns>
+        /// CreatedBy: DVVUONG (17/01/2021)
         public int Add(TEntity entity)
         {
             var recordAffects = 0;
@@ -57,6 +68,12 @@ namespace MISA.Infrastructure
 
         }
 
+        /// <summary>
+        /// Xóa object
+        /// </summary>
+        /// <param name="entityId">khóa chính</param>
+        /// <returns>số bản ghi bị ảnh hưởng</returns>
+        /// CreatedBy: DVVUONG (17/01/2021)
         public int Delete(Guid entityId)
         {
             var dictionary = new Dictionary<string, object>
@@ -74,6 +91,11 @@ namespace MISA.Infrastructure
             return res;
         }
 
+        /// <summary>
+        /// lấy toàn bộ danh sách
+        /// </summary>
+        /// <returns>danh sách đối tượng</returns>
+        /// CreatedBy: DVVUONG (17/01/2021)
         public IEnumerable<TEntity> GetEntities()
         {
             
@@ -81,6 +103,12 @@ namespace MISA.Infrastructure
             return entities;
         }
 
+        /// <summary>
+        /// lấy toàn bộ danh sách
+        /// </summary>
+        /// <param name="storeName">store procedure</param>
+        /// <returns>danh sách đối tượng</returns>
+        /// CreatedBy: DVVUONG (17/01/2021)
         public IEnumerable<TEntity> GetEntities(string storeName)
         {
             // tạo commandText
@@ -89,6 +117,12 @@ namespace MISA.Infrastructure
             return entities;
         }
 
+        /// <summary>
+        /// lấy object theo khóa chính
+        /// </summary>
+        /// <param name="entityId">khóa chính</param>
+        /// <returns>object</returns>
+        /// CreatedBy: DVVUONG (17/01/2021)
         public TEntity GetEntityById(Guid entityId)
         {
             var dictionary = new Dictionary<string, object>
@@ -102,6 +136,12 @@ namespace MISA.Infrastructure
             return entity;
         }
 
+        /// <summary>
+        /// Cập nhật thông tin object
+        /// </summary>
+        /// <param name="entity">object</param>
+        /// <returns>số bản ghi bị ảnh hưởng</returns>
+        /// CreatedBy: DVVUONG (17/01/2021)
         public int Update(TEntity entity)
         {
             var recordAffects = 0;
@@ -122,9 +162,10 @@ namespace MISA.Infrastructure
         /// <summary>
         /// Mapping data type
         /// </summary>
-        /// <typeparam name="TEntity"></typeparam>
-        /// <param name="entity"></param>
+        /// <typeparam name="TEntity">objec generic</typeparam>
+        /// <param name="entity">object</param>
         /// <returns></returns>
+        /// CreatedBy: DVVUONG (17/01/2021)
         private DynamicParameters MappingDbType(TEntity entity)
         {
             var parameters = new DynamicParameters();
@@ -146,6 +187,13 @@ namespace MISA.Infrastructure
             return parameters;
         }
 
+        /// <summary>
+        /// lấy object theo property
+        /// </summary>
+        /// <param name="entity">object</param>
+        /// <param name="property">property</param>
+        /// <returns>object</returns>
+        /// CreatedBy: DVVUONG (17/01/2021)
         public TEntity GetEntityByProperty(TEntity entity, PropertyInfo property)
         {
             var propertyName = property.Name;
@@ -169,6 +217,10 @@ namespace MISA.Infrastructure
             return entityReturn;
         }
 
+        /// <summary>
+        /// Ngắt kết nói tới CSDL
+        /// </summary>
+        /// CreatedBy: DVVUONG (22/01/2021)
         public void Dispose()
         {
             if (_dbConnection.State == ConnectionState.Open)
