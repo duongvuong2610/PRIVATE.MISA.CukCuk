@@ -42,6 +42,8 @@ namespace MISA.ApplicationCore.Services
         public ServiceResult Delete(Guid entityId)
         {
             _serviceResult.Data = _baseRepository.Delete(entityId);
+            _serviceResult.MISACode = Enums.MISACode.Success;
+            _serviceResult.Messenger = Properties.Resources.Msg_DeleteSuccess;
             return _serviceResult;
         }
 

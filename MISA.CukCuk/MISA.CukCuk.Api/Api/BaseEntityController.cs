@@ -108,8 +108,15 @@ namespace MISA.CukCuk.Web.Api
         [HttpDelete("{entityId}")]
         public IActionResult Delete(Guid entityId)
         {
-            var rowAffects = _baseService.Delete(entityId);
-            return Ok(rowAffects);
+            var serviceResult = _baseService.Delete(entityId);
+            if (serviceResult.MISACode == ApplicationCore.Enums.MISACode.NotValid)
+            {
+                return BadRequest(serviceResult);
+            }
+            else
+            {
+                return Ok(serviceResult);
+            }
         }
 
         #endregion

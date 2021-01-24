@@ -70,6 +70,15 @@ namespace MISA.ApplicationCore.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Xóa dữ liệu thành công.
+        /// </summary>
+        public static string Msg_DeleteSuccess {
+            get {
+                return ResourceManager.GetString("Msg_DeleteSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Thông tin {0} đã có trên hệ thống.
         /// </summary>
         public static string Msg_Dulicate {

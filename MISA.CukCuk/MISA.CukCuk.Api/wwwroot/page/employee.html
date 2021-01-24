@@ -278,12 +278,14 @@
 
             </div>
             <div class="dialog-footer">
+                <button id="v-btnDelete">Xóa</button>
                 <button id="btnCancel" class="m-btn-cancel">Hủy</button>
 
                 <button id="btnSave" class="m-btn m-btn-save">
                     <div class="m-btn-icon icon-save"></div>
                     <div class="btn-text">Lưu</div>
                 </button>
+
 
             </div>
         </div>
@@ -303,6 +305,21 @@
             <li><i class="fas fa-exclamation-triangle"></i>Email đã có trên hệ thống</li>-->
         </ul>
 
+    </div>
+
+    <div class="m-popup popup-detail" id="m-popup-confirmDel">
+        <div class="popup-modal"></div>
+        <div class="popup-content">
+            <div class="popup-title">Thông báo</div>
+            <div style="display:flex">
+                <div class="popup-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                <div class="popup-text">Bạn có chắc chắn muốn xóa nhân viên <span style="font-weight: bold;" id="idRowDel">NV69852556</span> không?</div>
+            </div>
+            <div class="popup-action">
+                <div class="m-btn-cancel2"><button id="m-btn-cancel2">Không</button></div>
+                <div class="m-btn-del"><button id="btnDel">Có</button></div>
+            </div>
+        </div>
     </div>
 
     <script src="/lib/jquery-3.5.1.min.js"></script>

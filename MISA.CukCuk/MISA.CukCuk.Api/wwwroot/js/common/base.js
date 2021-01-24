@@ -27,9 +27,18 @@ class BaseJS {
         // Thực hiện lưu dữ liệu khi nhấn button [Lưu] trên form form thêm
         $('#btnSave').click(me.btnSaveOnClick.bind(me))
 
+        // Thực hiện đóng form xác nhận xóa, khi nhấp nút [Không]
+        $('#m-btn-cancel2').click(function () {
+            $('#m-popup-confirmDel').hide();
+        });
+
+       
 
         // Hiển thi thông tin chi tiết khi nhấn đúp chuột vào 1 bản ghi trên danh sách dữ liệu
         $('table tbody').on('dblclick', 'tr', function () {
+            // hiển thị nút Xóa
+            $('#v-btnDelete').show();
+
             $(this).find('td').addClass('row-selected');
             $('input').removeClass('border-red');
             // load dữ liệu cho các combobox
@@ -40,6 +49,8 @@ class BaseJS {
             // lấy khóa chính của bản ghi
             var recordId = $(this).data('recordId');
             me.EmployeeId = recordId;
+            var recordCode = $(this).data('recordCode');
+            me.EmployeeCode = recordCode;
             console.log(recordId);
             // gọi service lấy thông tin chi tiết qua id
             $.ajax({
@@ -104,6 +115,18 @@ class BaseJS {
             $('.m-dialog').show();
         })
 
+
+        // Thực hiện form xác nhận xóa
+        $('#v-btnDelete').click(function () {
+            var span = $('#idRowDel');
+            span.empty();
+            span.append(me.EmployeeCode);
+            // hiển thị form xác nhận xóa
+            $('#m-popup-confirmDel').show();
+        });
+
+
+       
         /*
          * validate bắt buộc nhập 
          * Created: dvvuong (11/01/2021)
@@ -145,6 +168,7 @@ class BaseJS {
                 $.each(res, function (index, obj) {
                     var tr = $(`<tr></tr>`);
                     $(tr).data('recordId', obj.EmployeeId);
+                    $(tr).data('recordCode', obj.EmployeeCode);
                     // lấy thông tin dữ liệu sẽ map tương ứng với các cột
                     $.each(columns, function (index, th) {
                         var td = $('<td><div><span></span></div></td>');
@@ -192,10 +216,12 @@ class BaseJS {
      * */
     btnAddOnClick() {
         try {
+            // ẩn nút xóa
+            $('#v-btnDelete').hide();
 
             var me = this;
             me.FormMode = 'Add';
-            $('#txtEmployeeCode').focus();
+            $('input #txtEmployeeCode').focus();
             // Hiển thị dialog thông tin chi tiết
             $('.m-dialog').show();
             $('input').val(null);

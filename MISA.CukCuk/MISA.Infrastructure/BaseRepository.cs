@@ -66,9 +66,9 @@ namespace MISA.Infrastructure
             DynamicParameters parameter = new DynamicParameters(dictionary);
             var res = 0;
             _dbConnection.Open();
-            using(var transaction = _dbConnection.BeginTransaction())
+            using (var transaction = _dbConnection.BeginTransaction())
             {
-                res = _dbConnection.Execute($"Proc_Delele{_tableName}", param: parameter, commandType: CommandType.StoredProcedure);
+                res = _dbConnection.Execute($"Proc_Delete{_tableName}", param: parameter, commandType: CommandType.StoredProcedure);
                 transaction.Commit();
             }
             return res;
