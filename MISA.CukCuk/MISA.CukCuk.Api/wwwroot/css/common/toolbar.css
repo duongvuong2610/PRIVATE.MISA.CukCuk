@@ -13,3 +13,12 @@
         position: absolute;
         right: 16px;
     }
+
+    .filter-bar .filter-left select {
+        padding: 10px 16px;
+        border-radius: 5px;
+        outline: none;
+        border: 1px solid #bbbbbb;
+        margin-left: 10px;
+    }
+    

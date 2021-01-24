@@ -49,20 +49,18 @@ namespace MISA.Infrastructure
             _dbConnection.Open();
             using (var transaction = _dbConnection.BeginTransaction())
             {
-                // Xử lý các kiểu dữ liệu (mapping dateType)
-                var parameters = MappingDbType(entity);
-                // thực thi commandText
-                recordAffects = _dbConnection.Execute($"Proc_Insert{_tableName}", param: parameters, commandType: CommandType.StoredProcedure);
-                transaction.Commit();
-                //return recordAffects;
-                //try
-                //{
-
-                //}
-                //catch (Exception)
-                //{
-                //    transaction.Rollback();
-                //}
+                try
+                {
+                    // Xử lý các kiểu dữ liệu (mapping dateType)
+                    var parameters = MappingDbType(entity);
+                    // thực thi commandText
+                    recordAffects = _dbConnection.Execute($"Proc_Insert{_tableName}", param: parameters, commandType: CommandType.StoredProcedure);
+                    transaction.Commit();
+                }
+                catch (Exception)
+                {
+                    transaction.Rollback();
+                }
             }
             return recordAffects;
 
@@ -85,8 +83,15 @@ namespace MISA.Infrastructure
             _dbConnection.Open();
             using (var transaction = _dbConnection.BeginTransaction())
             {
-                res = _dbConnection.Execute($"Proc_Delete{_tableName}", param: parameter, commandType: CommandType.StoredProcedure);
-                transaction.Commit();
+                try
+                {
+                    res = _dbConnection.Execute($"Proc_Delete{_tableName}", param: parameter, commandType: CommandType.StoredProcedure);
+                    transaction.Commit();
+                }
+                catch (Exception)
+                {
+                    transaction.Rollback();
+                }
             }
             return res;
         }
@@ -148,12 +153,19 @@ namespace MISA.Infrastructure
             _dbConnection.Open();
             using (var transaction = _dbConnection.BeginTransaction())
             {
-                // Xử lý các kiểu dữ liệu (mapping dateType)
-                var parameters = MappingDbType(entity);
-                // thực thi commandText
-                recordAffects = _dbConnection.Execute($"Proc_Update{_tableName}", param: parameters, commandType: CommandType.StoredProcedure);
-                transaction.Commit();
-                // trả về kết quả (số bản ghi thêm mới được)
+                try
+                {
+                    // Xử lý các kiểu dữ liệu (mapping dateType)
+                    var parameters = MappingDbType(entity);
+                    // thực thi commandText
+                    recordAffects = _dbConnection.Execute($"Proc_Update{_tableName}", param: parameters, commandType: CommandType.StoredProcedure);
+                    transaction.Commit();
+                }
+                catch (Exception)
+                {
+                    transaction.Rollback();
+                }
+                
             }
 
             return recordAffects;
