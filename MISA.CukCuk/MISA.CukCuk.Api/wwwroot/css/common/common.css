@@ -104,10 +104,11 @@
 }
 
 .warning {
-    position: absolute;
-    top: 0px;
-    right: 50px;
+    position: fixed;
+    bottom: 60px;
+    right: 20px;
     display: none;
+    z-index: 10000;
 }
 .warning-notvalid {
     background-color: #FFCECE;
@@ -127,9 +128,9 @@
     }
 .m-inform {
     position: fixed;
-    top: 60px;
-    right: 250px;
-    z-index: 1600;
+    bottom: 30px;
+    right: 20px;
+    z-index: 10000;
     display: none;
 }
 

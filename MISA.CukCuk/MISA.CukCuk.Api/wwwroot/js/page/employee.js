@@ -12,6 +12,10 @@ class EmployeeJS extends BaseJS {
         super();
     }
 
+    /**
+     * xét lại endpoint cho trang employee
+     * Author: DVVUONG (08/01/2021)
+     * */
     setApiRouter() {
         this.apiRouter = "/api/v1/employees";
     }

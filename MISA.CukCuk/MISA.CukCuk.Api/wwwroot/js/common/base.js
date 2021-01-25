@@ -1,4 +1,7 @@
-﻿
+﻿/**
+ * Class quản lý các sự kiện cho trang giao diện
+ * CreatedBy: dvvuong (03/01/2020)
+ * */
 class BaseJS {
     constructor() {
         this.host = "";
@@ -8,10 +11,18 @@ class BaseJS {
         this.loadData();
     }
 
+    /**
+     * xét endpoint 
+     * Author: DVVUONG (08/01/2021)
+     * */
     setApiRouter() {
 
     }
 
+    /**
+     * hàm thực hiện các sự kiện 
+     * Author: DVVUONG (17/01/2021)
+     * */
     initEvents() {
         var me = this;
         // Sự kiện click khi nhấn thêm mới
@@ -34,7 +45,10 @@ class BaseJS {
 
        
 
-        // Hiển thi thông tin chi tiết khi nhấn đúp chuột vào 1 bản ghi trên danh sách dữ liệu
+        /*
+         Hiển thi thông tin chi tiết khi nhấn đúp chuột vào 1 bản ghi trên danh sách dữ liệu
+         Author: DVVUONG (16/01/2021)
+         */
         $('table tbody').on('dblclick', 'tr', function () {
             // hiển thị nút Xóa
             $('#v-btnDelete').show();
@@ -57,6 +71,7 @@ class BaseJS {
             $.ajax({
                 url: me.host + me.apiRouter + `/${recordId}`,
                 method: 'GET',
+                async: true,
             }).done(function (res) {
                 // bindding dữ liệu lên form thông tin chi tiết
                 //console.log(res);
@@ -118,7 +133,10 @@ class BaseJS {
         })
 
 
-        // Thực hiện form xác nhận xóa
+        /*-------------------------------
+         Thực hiện form xác nhận xóa
+         Author: DVVUONG (17/01/2021)
+         */
         $('#v-btnDelete').click(function () {
             var span = $('#idRowDel');
             span.empty();
@@ -127,7 +145,10 @@ class BaseJS {
             $('#m-popup-confirmDel').show();
         });
 
-        // Thực hiện xóa record khi nhấn nút [Xóa] trên form giao diện xác nhận xóa
+        /*----------------------------------------------------------------------
+         Thực hiện xóa record khi nhấn nút [Xóa] trên form giao diện xác nhận xóa
+         Author: DVVUONG (17/01/2021)
+         */
         $('#btnDel').click(function () {
             var stringUrl = me.host + me.apiRouter + `/${me.EmployeeId}`;
             $.ajax({
@@ -169,9 +190,9 @@ class BaseJS {
 
 
        
-        /*
+        /*---------------------------------
          * validate bắt buộc nhập 
-         * Created: dvvuong (11/01/2021)
+         * Author: dvvuong (11/01/2021)
          */
         $('input[required]').blur(function () {
             // kiểm tra dữ liệu đã nhập, nếu để trống thì cảnh báo
@@ -187,8 +208,9 @@ class BaseJS {
             }
         })
 
-        /*
+        /*--------------------------------------
          validate Email
+         Author: dvvuong (13/01/2021)
          */
         $('input[type="email"]').blur(function () {
             var valueToTest = $(this).val();
@@ -205,8 +227,9 @@ class BaseJS {
             }
         })
 
-        /*
+        /*--------------------------------
          validate Salary
+         Author: DVVUONG (15/01/2021)
          */
         $('input[id="txtSalary"], input[id="txtPhoneNumber"]').blur(function () {
             var valueToTest = $(this).val();
@@ -224,7 +247,7 @@ class BaseJS {
 
     }
 
-    /**
+    /**------------------------------------
      * Load dữ liệu
      * CreatedBy: dvvuong (31/12/2020)
      * */
@@ -397,7 +420,7 @@ class BaseJS {
             var showPopup = $('div .warning-success');
             showPopup.empty();
             showPopup.append($(`<i class="fas fa-info-circle"></i>&nbsp;<p>` + res.Messenger + `</p>`));
-            $(".m-inform").show().delay(6000).fadeOut(
+            $(".m-inform").show().delay(7000).fadeOut(
             );
    
             $('.m-dialog').hide();
@@ -415,7 +438,7 @@ class BaseJS {
                     li.append(value);
                     ul.append(li);
                 }
-                $("#pop-up").show().delay(5000).fadeOut();
+                $("#pop-up").show().delay(6000).fadeOut();
             }
         })
     }
@@ -432,7 +455,7 @@ class BaseJS {
         var showPopup = $('div .warning-success');
         showPopup.empty();
         showPopup.append($(`<i class="fas fa-info-circle"></i>&nbsp;<p>` + `Load dữ liệu thành công` + `</p>`));
-        $(".m-inform").show().delay(6000).fadeOut(
+        $(".m-inform").show().delay(7000).fadeOut(
         );
     }
 

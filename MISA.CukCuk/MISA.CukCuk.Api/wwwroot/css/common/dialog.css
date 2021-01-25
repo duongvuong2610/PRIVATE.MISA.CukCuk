@@ -171,8 +171,8 @@
         /*width: 750px;*/
         /*height: 580px;*/
         z-index: 2000;
-        top: calc(50% - 420px);
-        left: calc(50% - 395px);
+        top: calc(50% - 200px);
+        left: calc(50% - 240px);
         background-color: #ffffff;
         border-radius: 5px;
     }

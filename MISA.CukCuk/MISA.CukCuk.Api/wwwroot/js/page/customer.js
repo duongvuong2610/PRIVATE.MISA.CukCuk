@@ -16,6 +16,10 @@ class CustomerJS extends BaseJS {
         super();
     }
 
+    /**
+     * xét lại endpoint cho trang customer
+     * Author: DVVUONG (08/01/2021)
+     * */
     setApiRouter() {
         this.apiRouter = "/api/v1/customers";
     }
