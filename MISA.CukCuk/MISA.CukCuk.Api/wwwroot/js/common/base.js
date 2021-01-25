@@ -165,7 +165,7 @@ class BaseJS {
                 var showPopup = $('div .warning-success');
                 showPopup.empty();
                 showPopup.append($(`<i class="fas fa-info-circle"></i>&nbsp;<p>` + res.Messenger + `</p>`));
-                $(".m-inform").show().delay(7000).fadeOut(
+                $(".m-inform").show().delay(5000).fadeOut(
                 );
                 $('#m-popup-confirmDel').hide();
                 $('.m-dialog').hide();
@@ -420,7 +420,7 @@ class BaseJS {
             var showPopup = $('div .warning-success');
             showPopup.empty();
             showPopup.append($(`<i class="fas fa-info-circle"></i>&nbsp;<p>` + res.Messenger + `</p>`));
-            $(".m-inform").show().delay(7000).fadeOut(
+            $(".m-inform").show().delay(5000).fadeOut(
             );
    
             $('.m-dialog').hide();
@@ -455,7 +455,7 @@ class BaseJS {
         var showPopup = $('div .warning-success');
         showPopup.empty();
         showPopup.append($(`<i class="fas fa-info-circle"></i>&nbsp;<p>` + `Load dữ liệu thành công` + `</p>`));
-        $(".m-inform").show().delay(7000).fadeOut(
+        $(".m-inform").show().delay(5000).fadeOut(
         );
     }
 
