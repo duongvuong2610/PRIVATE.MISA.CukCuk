@@ -208,12 +208,12 @@ class BaseJS {
         /*
          validate Salary
          */
-        $('input[id="txtSalary"]').blur(function () {
+        $('input[id="txtSalary"], input[id="txtPhoneNumber"]').blur(function () {
             var valueToTest = $(this).val();
             var testSalary = /^\d+$/;
             if (!testSalary.test(valueToTest)) {
                 $(this).addClass('border-red');
-                $(this).attr('title', 'Tiền lương không đúng định dạng');
+                $(this).attr('title', 'Trường này không đúng định dạng');
                 $(this).attr("validate", false);
             }
             else {
@@ -295,7 +295,11 @@ class BaseJS {
         try {
             // ẩn nút xóa
             $('#v-btnDelete').hide();
-
+            //focus input 
+            //$('input[id=txtEmployeeCode]').focus(function () {
+            //    //$(this).blur();
+            //    $(this).addClass('border-red');
+            //});
             var me = this;
             me.FormMode = 'Add';
             //$('input[id="txtEmployeeCode"]').focus();
@@ -383,8 +387,8 @@ class BaseJS {
             method: method,
             data: JSON.stringify(entity),
             contentType: 'application/json',
+            async: true,
         }).done(function (res) {
-            debugger
             // sau khi lưu thành công thi: 
             // + đưa ra thông báo thành công
             // + ẩn form chi tiết

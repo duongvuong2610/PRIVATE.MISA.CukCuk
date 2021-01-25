@@ -25,6 +25,7 @@
         display: flex;
         padding: 24px 24px 0 24px;
         position: relative;
+        margin-bottom: 15px;
     }
         .m-dialog .dialog-header .dialog-header-close{
             position: absolute;
@@ -84,7 +85,7 @@
                 border-radius: 5px;
             }
                 .m-dialog .dialog-footer .m-btn-cancel:hover{
-                    background-color: #dddddd;
+                    background-color: #bbbbbb;
                 }
 
                 #v-btnDelete {

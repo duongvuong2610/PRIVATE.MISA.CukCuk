@@ -191,21 +191,21 @@
                         <div class="m-display-flex">
                             <div class="m-row m-row-margin">
                                 <div class="m-label">Mã nhân viên (<span class="field-important">*</span>)</div>
-                                <div class="m-control"><input id="txtEmployeeCode" type="text" fieldName="EmployeeCode" class="input-dialog-focus" required /></div>
+                                <div class="m-control"><input id="txtEmployeeCode" type="text" fieldName="EmployeeCode" class="input-dialog-focus" required tabindex="1"/></div>
                             </div>
                             <div class="m-row">
                                 <div class="m-label">Họ và tên (<span class="field-important">*</span>)</div>
-                                <div class="m-control"><input id="txtFullName" type="text" fieldName="FullName" class="input-dialog-focus" required /></div>
+                                <div class="m-control"><input id="txtFullName" type="text" fieldName="FullName" class="input-dialog-focus" required tabindex="2"/></div>
                             </div>
                         </div>
                         <div class="m-display-flex">
                             <div class="m-row m-row-margin">
                                 <div class="m-label">Ngày sinh</div>
-                                <div class="m-control m-user-date"><input id="dtDateOfBirth" fieldName="DateOfBirth" type="date" class="input-dialog-focus" /></div>
+                                <div class="m-control m-user-date"><input id="dtDateOfBirth" fieldName="DateOfBirth" type="date" class="input-dialog-focus" tabindex="3"/></div>
                             </div>
                             <div class="m-row">
                                 <div class="m-label">Giới tính</div>
-                                <select id="cbxGender" fieldName="Gender" class="m-control m-select input-dialog-focus">
+                                <select id="cbxGender" fieldName="Gender" class="m-control m-select input-dialog-focus" tabindex="4">
                                     <option value="0">Nam</option>
                                     <option value="1">Nữ</option>
                                     <option value="2">Khác</option>
@@ -216,30 +216,30 @@
                             <div class="m-row m-row-margin">
 
                                 <div class="m-label">Số CMTND/ Căn cước (<span class="field-important">*</span>)</div>
-                                <div class="m-control"><input id="txtIdentityCardCode" fieldName="IdentityCardCode" type="text" class="input-dialog-focus" required /></div>
+                                <div class="m-control"><input id="txtIdentityCardCode" fieldName="IdentityCardCode" type="text" class="input-dialog-focus" required tabindex="5"/></div>
                             </div>
 
                             <div class="m-row m-row-margin">
                                 <div class="m-label">Ngày cấp</div>
-                                <div class="m-control m-user-date"><input id="dtIdentityCardDate" fieldName="IdentityCardDate" type="date" class="input-dialog-focus" /></div>
+                                <div class="m-control m-user-date"><input id="dtIdentityCardDate" fieldName="IdentityCardDate" type="date" class="input-dialog-focus" tabindex="6"/></div>
                             </div>
                         </div>
 
                         <div class="m-display-flex">
                             <div class="m-row m-row-margin">
                                 <div class="m-label">Nơi cấp</div>
-                                <div class="m-control"><input id="txtIdentityCardPlace" type="text" fieldName="IdentityCardPlace" class="input-dialog-focus" /></div>
+                                <div class="m-control"><input id="txtIdentityCardPlace" type="text" fieldName="IdentityCardPlace" class="input-dialog-focus" tabindex="7"/></div>
                             </div>
 
                         </div>
                         <div class="m-display-flex">
                             <div class="m-row m-row-margin">
                                 <div class="m-label">Email (<span class="field-important">*</span>)</div>
-                                <div class="m-control"><input id="txtEmail" type="email" fieldName="Email" class="input-dialog-focus" placeholder="example@domain.com" required /></div>
+                                <div class="m-control"><input id="txtEmail" type="email" fieldName="Email" class="input-dialog-focus" placeholder="example@domain.com" required tabindex="8"/></div>
                             </div>
                             <div class="m-row">
                                 <div class="m-label">Số điện thoại (<span class="field-important">*</span>)</div>
-                                <div class="m-control"><input id="txtPhoneNumber" type="text" fieldName="PhoneNumber" class="input-dialog-focus"  required /></div>
+                                <div class="m-control"><input id="txtPhoneNumber" type="text" fieldName="PhoneNumber" class="input-dialog-focus"  required tabindex="9"/></div>
                             </div>
                         </div>
                         <div>
@@ -248,35 +248,35 @@
                         <div class="m-display-flex">
                             <div class="m-row m-row-margin">
                                 <div class="m-label">Vị trí</div>
-                                <select id="cbxPosition" field="checked" fieldName="PositionName" fieldValue="PositionId" api="/api/v1/positions" class="m-control m-select input-dialog-focus">
+                                <select id="cbxPosition" field="checked" fieldName="PositionName" fieldValue="PositionId" api="/api/v1/positions" class="m-control m-select input-dialog-focus" tabindex="10">
                                 </select>
                             </div>
                             <div class="m-row">
                                 <div class="m-label">Phòng ban</div>
-                                <select id="cbxDepartment" fieldName="DepartmentName" fieldValue="DepartmentId" api="/api/v1/departments" class="m-control m-select input-dialog-focus">
+                                <select id="cbxDepartment" fieldName="DepartmentName" fieldValue="DepartmentId" api="/api/v1/departments" class="m-control m-select input-dialog-focus" tabindex="11">
                                 </select>
                             </div>
                         </div>
                         <div class="m-display-flex">
                             <div class="m-row m-row-margin">
                                 <div class="m-label">Mã số thuế cá nhân</div>
-                                <div class="m-control"><input id="txtEmployeeTaxCode" type="text" fieldName="EmployeeTaxCode" class="input-dialog-focus" /></div>
+                                <div class="m-control"><input id="txtEmployeeTaxCode" type="text" fieldName="EmployeeTaxCode" class="input-dialog-focus"  tabindex="12"/></div>
                             </div>
                             <div class="m-row">
                                 <div class="m-label">Mức lương cơ bản (<span class="field-important">*</span>)</div>
                                 <div class="m-control vnd-position">
-                                    <input id="txtSalary" type="text" fieldName="Salary" class="input-dialog-focus" required/>
+                                    <input id="txtSalary" type="text" fieldName="Salary" class="input-dialog-focus" required tabindex="13"/>
                                 </div>
                             </div>
                         </div>
                         <div class="m-display-flex">
                             <div class="m-row m-row-margin">
                                 <div class="m-label">Ngày gia nhập công ty</div>
-                                <div class="m-control m-user-date"><input id="dtDateOfJoin" fieldName="DateOfJoin" type="date" class="input-dialog-focus" /></div>
+                                <div class="m-control m-user-date"><input id="dtDateOfJoin" fieldName="DateOfJoin" type="date" class="input-dialog-focus" tabindex="14"/></div>
                             </div>
                             <div class="m-row">
                                 <div class="m-label">Tình trạng công việc</div>
-                                <select id="cbxWorkStatus" fieldName="WorkStatus" fieldValue="" class="m-control m-select input-dialog-focus">
+                                <select id="cbxWorkStatus" fieldName="WorkStatus" fieldValue="" class="m-control m-select input-dialog-focus" tabindex="15">
                                     <option value="0">Nghỉ việc</option>
                                     <option value="1">Đang làm việc</option>
                                 </select>
@@ -287,10 +287,10 @@
 
             </div>
             <div class="dialog-footer">
-                <button id="v-btnDelete">Xóa</button>
-                <button id="btnCancel" class="m-btn-cancel">Hủy</button>
+                <button id="v-btnDelete" tabindex="18">Xóa</button>
+                <button id="btnCancel" class="m-btn-cancel" tabindex="17">Hủy</button>
 
-                <button id="btnSave" class="m-btn m-btn-save">
+                <button id="btnSave" class="m-btn m-btn-save" tabindex="16">
                     <div class="m-btn-icon icon-save"></div>
                     <div class="btn-text">Lưu</div>
                 </button>
