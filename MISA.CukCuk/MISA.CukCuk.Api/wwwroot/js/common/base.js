@@ -454,7 +454,7 @@ class BaseJS {
         me.loadData();
         var showPopup = $('div .warning-success');
         showPopup.empty();
-        showPopup.append($(`<i class="fas fa-info-circle"></i>&nbsp;<p>` + `Load dữ liệu thành công` + `</p>`));
+        showPopup.append($(`<i class="fas fa-info-circle"></i>&nbsp;<p>` + `Tải lại dữ liệu thành công` + `</p>`));
         $(".m-inform").show().delay(5000).fadeOut(
         );
     }
