@@ -18,18 +18,19 @@ namespace MISA.ApplicationCore.Interfaces
         /// lấy toàn bộ danh sách 
         /// </summary>
         /// <returns>danh sách đối tượng</returns>
+        /// Author: DVVUONG (01/03/2021)
         IEnumerable<TEntity> GetEntities();
 
         /// <summary>
-        /// lấy đối tượng theo khóa chính
+        /// lấy bản ghi theo khóa chính
         /// </summary>
-        /// <param name="entityId">khóa chính</param>
-        /// <returns>object</returns>
-        /// CreatedBy: DVVUONG (17/01/2021)
+        /// <param name="entityId">khóa chính bản ghi cần lấy</param>
+        /// <returns>bản ghi có khóa chính thỏa mãn</returns>
+        /// Author: DVVUONG (01/03/2021)
         TEntity GetEntityById(Guid entityId);
 
         /// <summary>
-        /// Thực hiện thêm mới object
+        /// Thực hiện thêm mới bản ghi
         /// </summary>
         /// <param name="entity">object</param>
         /// <returns>Object chứa kết quả truy vấn</returns>
